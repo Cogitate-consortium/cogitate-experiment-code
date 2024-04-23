@@ -12,15 +12,15 @@ function screenError = initPsychtooblox()
 
     global DEBUG ScreenHeight stimSizeHeight ScreenWidth refRate screenScaler fontType fontSize fontColor text gray w REF_RATE_OPTIMAL center TRUE FALSE
     global WINDOW_RESOLUTION debugFactor NO_FULLSCREEN  VIEWING_DISTANCE MAX_VISUAL_ANGEL STIM_DURATION TRIAL_DURATION MRI_BASELINE_PERIOD ppd cx cy
-    global NO_AUDIO VOLUME SAMPLE_RATE NR_CHANNELS pahandle% These are required for the sound display
+    global NO_AUDIO VOLUME SAMPLE_RATE NR_CHANNELS BIT_DURATION pahandle% These are required for the sound display
 
     PsychDefaultSetup(2);
     
     % Set sync tests:
     try
-        if DEBUG Screen('Preference', 'SkipSyncTests', 1); else Screen('Preference', 'SkipSyncTests', 0); end
+        if DEBUG Screen('Preference', 'SkipSyncTests', 1); else Screen('Preference', 'SkipSyncTests', 1); end
     catch
-        if DEBUG Screen('Preference', 'SkipSyncTests', 1); else Screen('Preference', 'SkipSyncTests', 0); end
+        if DEBUG Screen('Preference', 'SkipSyncTests', 1); else Screen('Preference', 'SkipSyncTests', 1); end
     end
    
     % Setting the verbosity to high:
@@ -141,10 +141,24 @@ function screenError = initPsychtooblox()
         % (3) 1 = default level of latency
         % (4) Requested frequency in samples per second
         % (5) 2 = stereo putput
-        pahandle = PsychPortAudio('Open', [], 1, 3, SAMPLE_RATE, NR_CHANNELS);
-        
-        % Set the volume to half for this demo
-        PsychPortAudio('Volume', pahandle, VOLUME);
+        device = [];
+        mode = 1;
+        reqlatencyclass = 3;
+        freq = [];
+        channels = 2;
+        pahandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
+        % Get the status of the padhandle:
+        status = PsychPortAudio('GetStatus', pahandle);
+        sr = status.SampleRate;
+        disp(sr)
+        n_samples = BIT_DURATION/(1/sr);
+        squarewave = [ones(n_samples/2, 2); -1*ones(n_samples/2,2)];
+        % Adding the square wave to the buffer:
+        trig_buffer = PsychPortAudio('CreateBuffer', pahandle, squarewave');
+        % Load the trigger into a buffer, so that it can be played during
+        % the experiment. Because we have only one buffer, we can load it
+        % only once in the beginning:
+        PsychPortAudio('FillBuffer', pahandle, trig_buffer);
     end
     
 
