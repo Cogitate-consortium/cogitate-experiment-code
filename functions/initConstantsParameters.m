@@ -31,7 +31,7 @@ function initConstantsParameters(subNum)
     global TRIAL1_DURATION_COL TRIAL1_START_TIME_COL TRIAL1_NAME_COL MINIBLOCK_TYPE_COL TRIAL1_ANSWER_COL MINI_BLOCK_SIZE_COL MINI_BLK_NUM_COL
     global TYPE_COL ORIENTATION_COL CATEGORY_COL ACCURATE_COL HT_COL MS_COL CRS_COL FAS_COL RT_COL OUTPUT_TABLE_HEADER TRIGGER_TABLE_HEADER
     global EVENT_TYPE_COL output_table_cntr OUTPUT_TABLE TIME_COL EVENT_COL DSRD_RESP_COL PLN_JIT_DUR_COL PLN_STIM_DUR_COL TARG2_COL
-    global TARG1_COL MINIBLK_TYP_COL TRAIL_COL MINIBLK_COL BLK_COL EXP_COL OUTPUT_COLS BEHAV_FILE_NAMING BEHAV_FILE_NAMING_WHOLE BEHAV_FILE_SUMMARY_NAMING EYETRACKER_FILE_NAMING TRIG_LOG_FILE_NAMING LPTTRIG_LOG_FILE_NAMING
+    global TARG1_COL MINIBLK_TYP_COL TRAIL_COL MINIBLK_COL BLK_COL EXP_COL OUTPUT_COLS BEHAV_FILE_NAMING BEHAV_FILE_NAMING_WHOLE BEHAV_FILE_SUMMARY_NAMING EYETRACKER_FILE_NAMING TOBII_VALIDATION_LOG_FILE_NAMING TRIG_LOG_FILE_NAMING LPTTRIG_LOG_FILE_NAMING
     % -----------------------------------------------------
     % Timing parameters
     global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION MRI_BASELINE_PERIOD
@@ -59,14 +59,12 @@ function initConstantsParameters(subNum)
     % Triggers
     global TRG_TASK_IRRELEVANT TRG_RIGHT TRG_STIM_END TRG_EXP_END_MSG TRG_EXP_START_MSG TRG_MINIBLOCK_STARTED TRG_RESPONSE 
     global TRG_TASK_RELEVANT_NON_TARGET TRG_TASK_RELEVANT TRG_DUR_1500 TRG_DUR_1000 TRG_DUR_500 TRG_LEFT TRG_CENTER TRG_STIM_ADD TRG_TIME_BETWEEN TRG_JITTER_START TRG_MB_ADD TRG_TRIAL_ADD LPT_CODE_START LPT_CODE_END
-    global TRG_MBONSET_AUD TRG_EXP_END_MSG_AUD TRIGAUD_CODE_START TRG_RESPONSE_AUD
     % -----------------------------------------------------
     % Saving parameters
     global excelFormat excelFormatSummary
     % -----------------------------------------------------
     % Audio
-    global NR_CHANNELS SAMPLE_RATE SND_FREQ VOLUME  matrix_LUT MB_ID_START_END_BUF 
-    % global                         SUB_HAND_COL SUB_AGE_COL      
+    global MB_ID_START_END_BUF  
     % -----------------------------------------------------
     % Pseudorandomization parameters    
     global NUMBER_OF_NON_TARGET_SETS_PER_CAT NUMBER_OF_TOTAL_TRIALS NUMBER_OF_NON_TARGETS_PER_CAT_PER_MB 
@@ -101,6 +99,7 @@ function initConstantsParameters(subNum)
     LPTTRIG_LOG_FILE_NAMING = '_LPTTrigLog_V1_DurR';
     TRIG_LOG_FILE_NAMING = '_Beh_V1_TrigDurR';
     EYETRACKER_FILE_NAMING = '_ET_V1_DurR';
+    TOBII_VALIDATION_LOG_FILE_NAMING = '_ET_V1_Valid_sum_DurR';
     FILE_POSTFIX = '*.png';
     %add date as a separate column 5 years rewind
     t=datenum(date);
@@ -643,19 +642,9 @@ function initConstantsParameters(subNum)
     
     % Response params
     KbName('UnifyKeyNames');
-   if (strcmp(LAB_ID,'SD'))
-    RightKey      =  KbName('1!');
-    LeftKey       =  KbName('2@');
-    upKey         =  RightKey;
-   elseif (strcmp(LAB_ID,'SA'))
-    RightKey      =  KbName('7&');
-    LeftKey       =  KbName('8*');
-    upKey         =  RightKey;
-   else
     upKey         =  KbName('UpArrow');
     RightKey      =  KbName('RightArrow');
     LeftKey       =  KbName('LeftArrow');
-   end
     PauseKey      =  KbName('Q');   
     RestartKey    =  KbName('R'); 
     abortKey      =  KbName('ESCAPE'); % ESC aborts experiment
@@ -667,12 +656,17 @@ function initConstantsParameters(subNum)
     RESPONSE_KEY = upKey;
     ValidationKey = KbName('V');
     
-    if strcmp(LAB_ID,'SC')
+    
+    switch LAB_ID
+        case 'SC'    % Aya, you can probably best make a case for your setup here
             delete(instrfind)
             bitsi_buttonbox = Bitsi_Scanner('com2');    %init button boxes
             bitsi_buttonbox.clearResponses();
            
             bitsi_scanner = Bitsi_Scanner('com3');  %init bitsis receiving scanTrigger
+            
+        case 'SD'
+           
     end
     % the trigger codes for MEEG and EYE_TRACKER
 
@@ -698,40 +692,6 @@ function initConstantsParameters(subNum)
     TRG_TRIAL_ADD = 110;
     LPT_CODE_START = 81; 
     LPT_CODE_END = 83;
-    
-    % Trigger codes for audio trigger
-    TRIGAUD_CODE_START = 109;
-    TRG_RESPONSE_AUD = 110;
-    TRG_EXP_END_MSG_AUD = 116;
-    TRG_MBONSET_AUD = 110; % It is not the same as the TRG_RESPONSE_AUD: we add 1 so the lowest code will be 111
-    
-    % Stim id:
-    
-    matrix_LUT = zeros(4,3,3,3);
-
-    % Fill with values from 1 to 108:
-    ctr = 1;
-
-    for cat=1:4
-        for rel=1:3
-            for ori=1:3
-                for dur=1:3
-
-                    matrix_LUT(cat,rel,ori,dur) = ctr;
-                    ctr = ctr + 1;
-
-                end
-            end
-        end
-    end
-
-    %% Sound parameters
-    % Number of channels and Frequency of the sound
-    NR_CHANNELS = 2;
-    SAMPLE_RATE = 48000;
-    SND_FREQ = 500;
-    % How loud should the sound be
-    VOLUME = 0.5;
     
     %%  PARAMETERS THAT SHOULD NOT BE ALTERED, BUT SHOULD BE USED AS REFERENCE
 
@@ -817,18 +777,7 @@ function initConstantsParameters(subNum)
     INSTRUCTIONS3 = 'instructions3_ECoG.png';   
     INSTRUCTIONS4 = 'instructions4_ECoG.png';   
     INSTRUCTIONS5 = 'instructions5_ECoG.png';   
-    INSTRUCTIONS6 = 'instructions6_ECoG.png';
-    elseif MEEG
-        switch LAB_ID
-            case 'SA'
-                INSTRUCTIONS1 = 'instructions1_MEEG_SA.png';
-                INSTRUCTIONS2 = 'instructions2_MEEG_SA.png';
-                INSTRUCTIONS3 = 'instructions3_MEEG_SA.png';
-            case 'SB'
-                INSTRUCTIONS1 = 'instructions1_MEEG_SB.png';
-                INSTRUCTIONS2 = 'instructions2_MEEG_SB.png';
-                INSTRUCTIONS3 = 'instructions3_MEEG_SB.png';
-        end
+    INSTRUCTIONS6 = 'instructions6_ECoG.png';   
     else
     INSTRUCTIONS1 = 'instructions1.png';
     INSTRUCTIONS2 = 'instructions2.png';
@@ -908,8 +857,8 @@ function initConstantsParameters(subNum)
     MaxPracticeHits=6;
     MaxPracticeFalseAlarms=2;
     MaxPracticeFalseAlarms_Irrelevant=0;
-    MinPracticeHits_fMRI=2;
-    MaxPracticeHits_fMRI=3;
+    MinPracticeHits_fMRI=1;
+    MaxPracticeHits_fMRI=2;
     MaxPracticeFalseAlarms_fMRI=1;
     MaxPracticeFalseAlarms_Irrelevant_fMRI=0;
 

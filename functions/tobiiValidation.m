@@ -10,6 +10,7 @@
 function RedoCalib = tobiiValidation
 
 global tobii_eyetracker compKbDevice ScreenWidth ScreenHeight w YesKey text spaceBar gray
+global DATA_FOLDER LAB_ID subjectNum TOBII_VALIDATION_LOG_FILE_NAMING excelFormat
 
 try
     
@@ -101,7 +102,24 @@ try
     % Now, we present them against another to evaluate calibration
     % quality
     showSummaryCalibTobii(points_to_present,collectedSamples);
-    
+    % Logging the validation points for evaluating quality down the line:
+    validation_log = array2table([points_to_present,collectedSamples], 'VariableNames',{'x_presented','y_presented','x_measured','y_measured'});
+    % Saving:
+    % Generate file name
+    validation_log_file_name = fullfile(pwd,DATA_FOLDER,strcat(LAB_ID,num2str(subjectNum)), strcat(LAB_ID, num2str(subjectNum),TOBII_VALIDATION_LOG_FILE_NAMING));
+    % Because their might be several validations throughout the experiment, numbering the files to avoid overwriting. 
+    % Using a while loop to loop until the file name doesn't exists
+    ctr = 1;
+    exist = 1;
+    while exist == 1
+        if isfile(strcat(validation_log_file_name, '_', num2str(ctr), excelFormat))
+            ctr = ctr + 1;
+        else
+            writetable(validation_log, strcat(validation_log_file_name, '_', num2str(ctr), excelFormat))
+            exist = 0;
+        end
+    end
+            
     KbWait(compKbDevice,3); % Here we don't really tell the experimenter, but that will be in the SOP. And basically, they can touch anything!
     
     % Then, asking the experimenter whether he/she wants to redo the
