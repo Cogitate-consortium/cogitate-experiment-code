@@ -130,7 +130,7 @@ end
 %% Checking if participant already exists:
 global viewDistance compKbDevice subjectNum END_WAIT END_OF_EXPERIMENT_MESSAGE LOADING_MESSAGE 
 global RUN_PRACTICE PRACTICE_START_MESSAGE PRACTICE_START_MESSAGE_fMRI LPT_CODE_START LPT_OBJECT LPT_ADDRESS PRACTICE_START_MESSAGE_ECOG ScreenHeight
-global TRIGAUD_CODE_START WhereToRestart TOBII_EYETRACKER
+global WhereToRestart TOBII_EYETRACKER
 global ExistFlag DATA_FOLDER TEMPORARY_FOLDER EXPERIMENT_NAME BEHAV_FILE_NAMING_WHOLE miniBlocksInfo
 
 subjectNum = subNum;
@@ -213,12 +213,6 @@ try
         sendTrig(0,LPT_OBJECT,LPT_ADDRESS);
     end
     
-    % Initializing audio triggers for ECoG:
-    if ECoG && ~NO_AUDIO
-        % initialize clock of trigger, counting and saving variables
-        initAudioTrigger();
-        sendTrigAudio(dec2bin(TRIGAUD_CODE_START,7));
-    end
     
     % Marking experiment onset with photodiode flashes for ECoG:
     if ECoG && PHOTODIODE
@@ -354,7 +348,7 @@ function [ miniBlocks ] = runMiniBlocks( miniBlocks,TriggerMatrix )
 % Getting the relevant global variables:
 global output_table_cntr miniBlocksInfo BLOCK_NUM_COL MINIBLK_COL TRIAL1_ANSWER_COL TRIAL1_TIME_COL MINI_BLOCK_SIZE_COL EVENT_TYPE_COL compKbDevice TRIAL1_RESPONSE_TIME_COL   FALSE TRUE    TRIAL_DURATION
 global TRIAL1_BLANK_DUR_COL TRIAL1_STIM_DUR_COL refRate SAVING_MESSAGE NO_KEY TRIAL1_JITTER_TIME_COL TRIAL1_STIM_END_TIME_COL TRIAL1_BUTTON_PRESS_COL  TRIAL1_START_TIME_COL TRIAL1_DURATION_COL
-global MISSES_COL HITS_COL FA_COL CR_COL RightKey WRONG_KEY RESTART_KEY TARGET_KEY Behavior ExistFlag YesKey MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
+global MISSES_COL HITS_COL FA_COL CR_COL WRONG_KEY RESTART_KEY TARGET_KEY Behavior ExistFlag YesKey MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
 global EXPERIMET_START_MESSAGE EXPERIMET_START_MESSAGE_fMRI END_OF_BLOCK_MESSAGE END_OF_BLOCK_MESSAGE_fMRI_MEG BLOCK_START_MESSAGE_fMRI BREAK_MESSAGE_fMRI MEG_BREAK_MESSAGE RESTART_MESSAGE RESTART_MESSAGE_fMRI RESTARTBLOCK_OR_MINIBLOCK_MESSAGE FEEDBACK_MESSAGES DEBUG OUTPUT_TABLE MRI_BASELINE_PERIOD MEGbreakKey EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS EYETRACKER_CALIBRATION_MESSAGE_fMRI EYETRACKER_CALIBRATION_MESSAGE_fMRI_BETWEENBLOCKS GENERAL_BREAK_MESSAGE
 global EXPERIMENT_START_MESSAGE_ECOG EYETRACKER_CALIBRATION_MESSAGE_ECOG EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS_ECOG PROGRESS_MESSAGE_ECOG GENERAL_BREAK_MESSAGE_ECOG END_OF_BLOCK_MESSAGE_ECOG
 global bitsi_buttonbox bitsi_scanner LAB_ID MEEG fMRI ECoG  LPT_OBJECT LPT_ADDRESS TRG_RESPONSE TRG_STIM_END TRG_JITTER_START TRG_MB_ADD
@@ -400,11 +394,11 @@ try
         % If we are in fMRI. we want to restart from the beginning of the block
         if(fMRI)
             if(~strcmp(OUTPUT_TABLE{miniBlockIndices(end),EVENT_TYPE_COL},'Save'))
-            % So the miniBlock number will be the first of the block we
-            % are at
-            miniBlockNum=1+4*floor((miniBlockNum-1)/4); 
+                % So the miniBlock number will be the first of the block we
+                % are at
+                miniBlockNum=1+4*floor((miniBlockNum-1)/4);
             else
-            miniBlockNum=miniBlockNum+1;      
+                miniBlockNum=miniBlockNum+1;
             end
             % Computing the block number
             Block_ctr=floor(miniBlockNum/4);
@@ -435,7 +429,7 @@ try
         if(fMRI && strcmp(OUTPUT_TABLE{miniBlockIndices(end),EVENT_TYPE_COL},'Save'))
             output_table_cntr=find(cell2mat(OUTPUT_TABLE(2:end,MINIBLK_COL))==miniBlockNum-1,1,'last')+2; % Fetching where to restart from when filling the output table. We append to the table rather than overwritting    
         else
-            output_table_cntr=find(cell2mat(OUTPUT_TABLE(2:end,MINIBLK_COL))==miniBlockNum,1,'last')+2; % Fetching where to restart from when filling the output table. We append to the table rather than overwritting
+            output_table_cntr=find(cellfun(@isempty,OUTPUT_TABLE(:,1)), 1, 'first'); % Fetching where to restart from when filling the output table. We append to the table rather than overwritting
         end
         
         tr = 0; % This is necessary for things not to crash: when restarting, the tr will be called before being defined otherwise
@@ -791,10 +785,7 @@ try
                             end
                         case 'SD'
                             
-                        [~, Resp, ~] =KbWait(compKbDevice,3);
-                        while (~Resp(RightKey))
-                            [~, Resp, ~] =KbWait(compKbDevice,3);
-                        end
+                            KbWait(compKbDevice,3);
                     end
                     % Create a server interface and open it to let the
                     % scanner listener know that the run is finished.
@@ -968,7 +959,8 @@ try
         cr = 0; % correct rejection
         
         % Showing the miniblock begin screen. This is the target screen
-        TargetScreenOnset=showMiniBlockBeginScreen(miniBlocks, miniBlockNum);
+        showMiniBlockBeginScreen(miniBlocks, miniBlockNum);
+        
         if ECoG % For the ECOG and MEEG or Behavior, wait for the participant to press a key to proceed
             KbWait(compKbDevice,3);
         elseif MEEG %for MEEG, wait 5 seconds max
@@ -1019,9 +1011,15 @@ try
             if ECoG && ~NO_AUDIO CanSendAudioTrigger = FALSE;end
 
             % clear bitsi
-            if strcmp(LAB_ID,'SC')
-               bitsi_buttonbox.clearResponses();
+            if fMRI
+                switch LAB_ID
+                    case 'SC'
+                        bitsi_buttonbox.clearResponses();
+                    case 'SD'
+                    
+                end
             end
+            
             % Flag for the first jitter:
             firstJitShown = FALSE; % For the first jitter, we set it separately, because things happen in a separate while loop
             
@@ -1073,12 +1071,9 @@ try
                         tobii_TimeCell(end+1,:) = {tobii.get_system_time_stamp,num2str(num2str(TRG_STIM_END))};
                     end
                 end
-                if ECoG && ~NO_AUDIO sendTrigAudio(dec2bin(TRG_MBONSET_AUD+Block_ctr,7)); end % Sending an audio trigger to mark onset of mb
                 if (fMRI && mod(miniBlockNum,4) == 1)
                 setOutputTable('RunOnset', miniBlocks, miniBlockNum,tr,RunOnset);
                 end
-                %Save Target Screen Onset
-                setOutputTable('TargetScreenOnset', miniBlocks, miniBlockNum,tr,TargetScreenOnset);
                 % log fixation in journal
                 setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, fixOnset); %4 %setting all the trial values in the output table
                 % Starting the while loop for the jitter of the first
@@ -1087,7 +1082,7 @@ try
                 
                 elapsedTime = 0;
                 while elapsedTime<((TRIAL_DURATION - miniBlocks{miniBlockNum, TRIAL1_TIME_COL}) ...
-                        + miniBlocks{miniBlockNum, TRIAL1_JITTER_TIME_COL + tr}) - refRate*(2/3)
+                        + miniBlocks{miniBlockNum, TRIAL1_JITTER_TIME_COL + tr}) - refRate*(1/4)
 
                     % If the LPT trigger was sent, the port needs to be
                     % set back to 0 after a frame
@@ -1099,7 +1094,7 @@ try
                     
                     % Then if the time of the fixation is exceeded,
                     % show the jitter:
-                    if elapsedTime >=  (TRIAL_DURATION - miniBlocks{miniBlockNum, TRIAL1_TIME_COL})...
+                    if elapsedTime >=  (TRIAL_DURATION - miniBlocks{miniBlockNum, TRIAL1_TIME_COL}) - refRate*(1/4) ...
                             && firstJitShown == FALSE
                         
                         JitOnset = showFixation('PhotodiodeOff'); % 6
@@ -1107,7 +1102,6 @@ try
                         % log jitter started
                         setOutputTable('Jitter', miniBlocks, miniBlockNum, tr, JitOnset);
                         if MEEG sendTrig(TRG_JITTER_START,LPT_OBJECT,LPT_ADDRESS); end
-                        %if ECoG sendTrigAudio(TRG_JITTER_START); end % 7
                         if EYE_TRACKER
                             if ~TOBII_EYETRACKER
                                 Eyelink('Message',num2str(TRG_JITTER_START));
@@ -1147,7 +1141,7 @@ try
                 sendTrig(TriggerMatrix(miniBlockNum,tr+1,FrameIndex+1),LPT_OBJECT,LPT_ADDRESS);
             end
             if ECoG && ~NO_AUDIO
-                sendStimTrigsAudio(miniBlocks,miniBlockNum,tr); % Here no need to add the plus 1, because of how the sendStimTrigsAudio access the stimulus ID
+                sendTrigAudio();
             end
             if EYE_TRACKER
                 if ~TOBII_EYETRACKER
@@ -1194,7 +1188,7 @@ try
             % this loop runs for trial duration.
             % it receives user response for the above stimuli
             % and then presents fixation (for a duration that includes its jitter)
-            while elapsedTime < TRIAL_DURATION + miniBlocks{miniBlockNum, TRIAL1_JITTER_TIME_COL + tr} - (refRate*(2/3))
+            while elapsedTime < TRIAL_DURATION + miniBlocks{miniBlockNum, TRIAL1_JITTER_TIME_COL + tr} - (refRate*(1/4))
                 
                 % In order to count the frames, I always convert the
                 % time to frames by dividing it by the refresh rate:
@@ -1244,19 +1238,7 @@ try
                     % Finally actualizing the frame: the current Frame
                     % becomes the previous one because time is ruthless
                     PreviousFrame = CurrentFrame;
-                end
-                % =====================================================
-                
-                
-                % =====================================================
-                % (b.) For the ECoG audio trigger, we only send the audio
-                % trigger if the participant answer after the first
-                % 200ms to avoid audio triggers interferences.
-                % Therefore, after the
-                if (ECoG && ~NO_AUDIO) && elapsedTime > RESP_TRIG_ONSET
-                    CanSendAudioTrigger = TRUE;
-                end
-                
+                end       
                 
                 % =====================================================
                 % b. Check input
@@ -1330,16 +1312,6 @@ try
                         % Sending response trigger for MEEG:
                         if MEEG sendResponseTrig(); end
                         
-                        % Sending response trigger for ECoG (no photodiode
-                        % trigger because they are yolked to frame rate by nature
-                        % and responses are not: 
-                        if (ECoG && ~NO_AUDIO) && CanSendAudioTrigger
-                            sendResponseTrigAudio();
-                            % If the response trigger was already sent,
-                            % we can't send it anymore for this trial
-                            CanSendAudioTrigger = FALSE;
-                        end
-                        
                         % Sending response trigger for the eyetracker
                         if EYE_TRACKER
                             if ~TOBII_EYETRACKER
@@ -1392,16 +1364,18 @@ try
                 % =====================================================
                 % c. Present fixation
                 % if there was no fixation yet, show fixation
-                if elapsedTime >= (miniBlocks{miniBlockNum, TRIAL1_TIME_COL + tr} - refRate*(2/3)) && fixShown == FALSE
+                if elapsedTime >= (miniBlocks{miniBlockNum, TRIAL1_TIME_COL + tr} - refRate*(1/4)) && fixShown == FALSE
                     miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr} = showFixation('PhotodiodeOn');
                     if MEEG sendTrig(TRG_STIM_END,LPT_OBJECT,LPT_ADDRESS); end
-                    %if ECoG sendTrigAudio(TRG_STIM_END); end
                     if EYE_TRACKER
                         if ~TOBII_EYETRACKER
                             Eyelink('Message',num2str(TRG_STIM_END));
                         else
                             tobii_TimeCell(end+1,:) = {tobii.get_system_time_stamp,num2str(TRG_STIM_END)};
                         end
+                    end
+                    if ECoG && ~NO_AUDIO
+                        sendTrigAudio();
                     end
                     % log fixation in journal
                     setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr}); %setting all the trial values in the output table
@@ -1426,7 +1400,7 @@ try
                 
                 % =====================================================
                 % d. Present the jitter
-                if elapsedTime > TRIAL_DURATION  - refRate*(2/3) && jitterLogged == FALSE
+                if elapsedTime > TRIAL_DURATION  - refRate*(1/4) && jitterLogged == FALSE
                     
                     JitOnset = showFixation('PhotodiodeOn');
                     if MEEG sendTrig(TRG_JITTER_START,LPT_OBJECT,LPT_ADDRESS); end
@@ -1437,14 +1411,12 @@ try
                             tobii_TimeCell(end+1,:) = {tobii.get_system_time_stamp,num2str(TRG_JITTER_START)};
                         end
                     end
+                    if ECoG && ~NO_AUDIO
+                        sendTrigAudio();
+                    end
                     % log jitter started
                     setOutputTable('Jitter', miniBlocks, miniBlockNum, tr, JitOnset);
                     jitterLogged = TRUE;
-                    % For the ECoG, if we are in the jitter already,
-                    % then the audio triggers for the response should
-                    % not be sent anymore, to avoid conflict with the
-                    % coming trigger:
-                    if ECoG && ~NO_AUDIO CanSendAudioTrigger = FALSE; end
                 end
                 
                 % Turning off the LPT trigger after the jitter
@@ -1521,10 +1493,6 @@ try
                 end
                 
                 if VERBOSE display(tr, 'In last trial loop with trial '); end
-                % Save the audio trigger log to HD
-                if ECoG && ~NO_AUDIO
-                    saveTrigAudToHD();
-                end
                 
                 % Save the LPT triggers log to HD
                 if MEEG
@@ -1559,9 +1527,9 @@ try
                         IrrelevantCategoryFAScore=0;
                     end
                     TotalScore=(HitsScore+FAScore+IrrelevantCategoryFAScore)*10;
-                    feedback_message_flag1=not(HitsScore/4<=0.5 || FAScore/3<=0.5 || IrrelevantCategoryFAScore<3);
-                    feedback_message_flag2=HitsScore/4<=0.5;
-                    feedback_message_flag3=FAScore/3<=0.5;
+                    feedback_message_flag1=not(HitsScore/4<0.5 || FAScore/3<0.5 || IrrelevantCategoryFAScore<3);
+                    feedback_message_flag2=HitsScore/4<0.5;
+                    feedback_message_flag3=FAScore/3<0.5;
                     feedback_message_flag4=IrrelevantCategoryFAScore<3;
                     feedback_messages=FEEDBACK_MESSAGES(find([feedback_message_flag1 feedback_message_flag2 (feedback_message_flag3 || feedback_message_flag4)]));
                     
@@ -1630,7 +1598,6 @@ try
     % Save the different triggers
     if MEEG saveTrigToHD(); end
     if VERBOSE disp('To save trigAudtoHD because end of experiment'); end
-    if ECoG && ~NO_AUDIO saveTrigAudToHD(); end
     
     % Copying these guys to a secret location to avoid overwritting
     secretDataSaving

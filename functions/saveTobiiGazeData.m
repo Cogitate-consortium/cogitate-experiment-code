@@ -14,7 +14,7 @@ GazeData = tobii_eyetracker.get_gaze_data();
 tobii_TimeTable = cell2table(tobii_TimeCell(2:end,:),'VariableNames',tobii_TimeCell(1,:));
 % preparing the cell to store the data
 gazeCell = {'subjectID', 'DistanceToScreen', 'ScreenHeightCm', 'ScreenWidthCm', 'ScreenHeightPix', 'ScreenWidthPix',...
-    'device_time_stamp','system_time_stamp','L_x','L_y','R_x','R_y','L_xPix','L_yPix','R_xPix','R_yPix',...
+    'device_time_stamp','system_time_stamp','L_x','L_y', 'L_pupil', 'R_x','R_y', 'R_pupil','L_xPix','L_yPix','R_xPix','R_yPix',...
     'L_xCm','L_yCm','R_xCm','R_yCm','Triggers'}; %Can't preallocate rows because each point may have a different n of samples
 SUBJECT = [LAB_ID,num2str(subjectNum)];
 % Looping through each raw of the gaze data
@@ -25,6 +25,7 @@ for i=1:length(GazeData)
         Lx = thisPoint.LeftEye.GazePoint.OnDisplayArea(1);
         Ly = thisPoint.LeftEye.GazePoint.OnDisplayArea(2);
         [LxCm, LyCm, LxPix, LyPix] = PropToCmAndPix(Lx,Ly);
+        Lpupil = thisPoint.LeftEye.Pupil.Diameter;
     else
         Lx   = NaN;
         Ly   = NaN;
@@ -32,12 +33,14 @@ for i=1:length(GazeData)
         LyCm = NaN;
         LxPix= NaN;
         LyPix= NaN;
+        Lpupil = NaN;
     end
     
     if length(thisPoint.RightEye.GazePoint.OnDisplayArea)==2
         Rx = thisPoint.RightEye.GazePoint.OnDisplayArea(1);
         Ry = thisPoint.RightEye.GazePoint.OnDisplayArea(2);
         [RxCm, RyCm, RxPix, RyPix] = PropToCmAndPix(Rx,Ry);
+        Rpupil = thisPoint.RightEye.Pupil.Diameter;
     else
         Rx = NaN;
         Ry = NaN;
@@ -45,6 +48,7 @@ for i=1:length(GazeData)
         RyCm = NaN;
         RxPix= NaN;
         RyPix= NaN;
+        Rpupil = NaN;
     end
     
     % In order to also add the triggers into this table, I first fill the
@@ -66,8 +70,10 @@ for i=1:length(GazeData)
         thisPoint.SystemTimeStamp,...
         Lx,...
         Ly,...
+        Lpupil,...
         Rx,...
         Ry,...
+        Rpupil,...
         LxPix,...
         LyPix,...
         RxPix,...
@@ -96,8 +102,10 @@ DeviceTimeVec = nan(height(tobii_TimeTable),1);
 SystTimeVec = tobii_TimeTable.system_time_stamp;
 LxVec = nan(height(tobii_TimeTable),1);
 LyVec = nan(height(tobii_TimeTable),1);
+LpupilVec = nan(height(tobii_TimeTable),1);
 RxVec = nan(height(tobii_TimeTable),1);
 RyVec = nan(height(tobii_TimeTable),1);
+RpupilVec = nan(height(tobii_TimeTable),1);
 LxPixVec = nan(height(tobii_TimeTable),1);
 LyPixVec = nan(height(tobii_TimeTable),1);
 RxPixVec = nan(height(tobii_TimeTable),1);
@@ -109,8 +117,8 @@ RyCmVec = nan(height(tobii_TimeTable),1);
 TriggerVec = tobii_TimeTable.point_description;
 
 TriggersTable = table(SubjVec,viewDisVec,ScreenWidthCmVec,ScreenHeightCmVec,...
-    ScreenWidthPixVec,ScreenHeightPixVec,DeviceTimeVec,SystTimeVec,LxVec,LyVec,...
-    RxVec,RyVec,LxPixVec,LyPixVec,RxPixVec,RyPixVec,LxCmVec,LyCmVec,RxCmVec,RyCmVec,...
+    ScreenWidthPixVec,ScreenHeightPixVec,DeviceTimeVec,SystTimeVec,LxVec,LyVec, LpupilVec,...
+    RxVec,RyVec, RpupilVec,LxPixVec,LyPixVec,RxPixVec,RyPixVec,LxCmVec,LyCmVec,RxCmVec,RyCmVec,...
     TriggerVec,'VariableNames',gazeCell(1,:));
 
 % Then, I append the triggers to the gaze table:
