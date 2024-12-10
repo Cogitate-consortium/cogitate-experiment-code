@@ -4,11 +4,11 @@ Welcome to the Cogitate Experiment Code Repository! This repository is dedicated
 
 ## Repository Structure
 
-The code for each modality and experiment version is organized into separate branches to ensure clarity and manageability. Below are the branches corresponding to Experiment 1:
+The code for each modality and experiment version is **__organized into separate branches__** to ensure clarity and manageability. Below are the branches corresponding to Experiment 1:
 
-- **MEEG-Exp1**: Contains the code used for acquiring MEEG data for Experiment 1.
-- **FMRI-Exp1**: Houses the code for FMRI data acquisition for Experiment 1.
-- **ECOG-Exp1**: Dedicated to the code for ECOG data acquisition for Experiment 1.
+- [**MEEG-Exp1**](https://github.com/Cogitate-consortium/cogitate-experiment-code/tree/MEEG-Exp1): Contains the code used for acquiring MEEG data for Experiment 1.
+- [**FMRI-Exp1**](https://github.com/Cogitate-consortium/cogitate-experiment-code/tree/FMRI-Exp1): Houses the code for FMRI data acquisition for Experiment 1.
+- [**ECOG-Exp1**](https://github.com/Cogitate-consortium/cogitate-experiment-code/tree/ECOG-Exp1): Dedicated to the code for ECOG data acquisition for Experiment 1.
 
 ### Upcoming Experiment 2 Code
 
