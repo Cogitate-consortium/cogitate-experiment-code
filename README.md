@@ -16,7 +16,6 @@ The code for Experiment 2 will be released following the same naming convention 
 
 - **MEEG-Exp2**: For MEEG data acquisition for Experiment 2.
 - **FMRI-Exp2**: Dedicated to FMRI data acquisition for Experiment 2.
-- **ECOG-Exp2**: For ECOG data acquisition for Experiment 2.
 
 ## Documentation
 
