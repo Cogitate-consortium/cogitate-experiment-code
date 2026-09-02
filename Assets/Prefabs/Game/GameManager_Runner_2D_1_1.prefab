@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!4 &128065927115717646 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4681638036098110, guid: 5acdc4dd408a00a4ca7cde171cfd8f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 132392903527624752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &133189176917747312 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4350205869692480, guid: 5acdc4dd408a00a4ca7cde171cfd8f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 132392903527624752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &131466399753246700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1501222212921308, guid: 5acdc4dd408a00a4ca7cde171cfd8f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 132392903527624752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8941705936060307810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131466399753246700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86ab011375caa7418d17991ddc3cce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foregroundParent: {fileID: 133189176917747312}
+  lanesParent: {fileID: 128065927115717646}
+  cutSceneDirector: {fileID: 0}
+--- !u!1001 &132392903527624752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1501222212921308, guid: 5acdc4dd408a00a4ca7cde171cfd8f03, type: 3}
+      propertyPath: m_Name
+      value: GameManager_Runner_2D_1_1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114629295839258058, guid: 5acdc4dd408a00a4ca7cde171cfd8f03, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 5acdc4dd408a00a4ca7cde171cfd8f03, type: 3}

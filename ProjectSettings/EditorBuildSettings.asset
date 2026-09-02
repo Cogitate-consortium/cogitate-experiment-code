@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Preloader.unity
+    guid: b97c33e03cacb6442aac43bdc03b7572
+  - enabled: 0
+    path: Assets/Scenes/FullLogAnalyzer.unity
+    guid: 316d69bc2ed027f47847987b99f3d1c8
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: bd44c233f166a564694b0ca23336f6e0
+  - enabled: 1
+    path: Assets/Scenes/LevelSelection.unity
+    guid: f0e63a9cb3bf8f1489f8e90a59e9a20a
+  - enabled: 1
+    path: Assets/Scenes/Game_Runner_2D_Blue.unity
+    guid: fc81d493d948ca642ba5f3e65189f60f
+  - enabled: 1
+    path: Assets/Scenes/Game_Runner_2D_Orange.unity
+    guid: de778ec83176d9b4db79f90fef79aeb9
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: 0a1e6716d0743684ca646a8763fb95f1
+  - enabled: 1
+    path: Assets/Scenes/FadeScene.unity
+    guid: 4e1a024f0d0976f42a0fb5b0944bf08b
+  m_configObjects: {}
