@@ -1,0 +1,3139 @@
+{
+    "ApplicationTitle": "蓝与黄",
+    "ApplicationSubTitle": "落球记",
+    "LabCode": "SB",
+    "module_Comment": "MEEG = 0, ECOG = 1, FMRI = 2",
+    "module": 0,
+    "PostLevelCleanupSafety_Comment": "After finishing a level, wait til all processes end to stop tracking and return to level selection",
+    "PostLevelCleanupSafetyMS": 500,
+    "PostLevelLoadupSafety_Comment": "After loading a level, wait til all processes end to stop tracking and then initialize managers",
+    "PostLevelLoadupSafetyMS": 500,
+    "maxNumThreads": 100,
+    "Input": {
+        "debug": false,
+        "preferredInputType_Comment": "Normal = 0, HighAccuracy = 1",
+        "preferredInputType": 1,
+        "preventInputWhenAltTabbed": true,
+        "allowExperimenterKeyCodesInRelease": false,
+        "usbConfig": {
+            "debug": false
+        },
+        "serialConfig": {
+            "serialPortConfig": {
+                "debug": true,
+                "portName": "COM2",
+                "baudRate": 115200,
+                "readBufferSize": 4096,
+                "EXPERIMENTER_ALLOW_SERIAL_FROM_KEYBOARD": false,
+                "EXPERIMENTER_SERIAL_FROM_KEYBOARD_KEY": 289
+            },
+            "debug": false
+        },
+        "highAccuUSBConfig": {
+            "refreshMS": 1,
+            "sleepMS": 1000,
+            "deadMS": 9
+        },
+        "highAccuSerialConfig": {
+            "refreshMS": 1,
+            "sleepMS": 1000,
+            "deadMS": 9
+        },
+        "doLock_Comment": "May help prevent a rare input crash. May also cause timing issues (untested as of 18/09/20)",
+        "doLock": true,
+        "defaultHandType_Comment": "Both = 0, Left = 1, Right = 2",
+        "defaultHandType": 0,
+        "EXPERIMENTER_ESCAPE": 27,
+        "EXPERIMENTER_TIMESCALE_FAST": 282,
+        "EXPERIMENTER_TIMESCALE_SLOW": 283,
+        "EXPERIMENTER_TIMESCALE_NORMAL": 284,
+        "EXPERIMENTER_TIMESCALE_MODIFIER": 304,
+        "EXPERIMENTER_DEBUG_TIME": 285,
+        "EXPERIMENTER_LEVELSELECTION_LOCK": 286,
+        "EXPERIMENTER_LEVELSELECTION_UNLOCK": 287,
+        "EXPERIMENTER_ALLOW_COMPLETE_LEVELS": false,
+        "EXPERIMENTER_COMPLETE_LEVEL_KEY": 290,
+        "startFlippedStrategy_Comment": "AlwaysStartNormal = 0, AlwaysStartFlipped = 1, StartFlippedForEvenIDs = 2, StartFlippedForOddIDS = 3, ValueFromUI = 4",
+        "startFlippedStrategy": 3,
+        "startFlippedUI_DefaultValue_Comment": "Only applies if startFlippedStategy is set to ValueFromUI",
+        "startFlippedUI_DefaultValue": false,
+        "doFlipMidWay": true,
+        "inputUseResponseBox_MEEG": true,
+        "inputUseResponseBox_ECOG": true,
+        "inputUseResponseBox_FMRI_Scanner": true,
+        "inputUseResponseBox_MEEG_Preparation": false,
+        "inputUseResponseBox_ECOG_Preparation": false,
+        "inputUseResponseBox_FMRI_Preparation": false,
+        "inputUseResponseBox_MEEG_Screening": false,
+        "inputUseResponseBox_ECOG_Screening": false,
+        "inputUseResponseBox_FMRI_Screening": false,
+        "serialEnabled_MEEG": false,
+        "serialEnabled_ECOG": false,
+        "serialEnabled_FMRI_Scanner": false,
+        "serialEnabled_MEEG_Preparation": false,
+        "serialEnabled_ECOG_Preparation": false,
+        "serialEnabled_FMRI_Preparation": false,
+        "serialEnabled_MEEG_Screening": false,
+        "serialEnabled_ECOG_Screening": false,
+        "serialEnabled_FMRI_Screening": false
+    },
+    "InputSerialPort_ResponseBox_TwoHands": {
+        "isResponseBox": true,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "moveLeft": {
+            "label": "左手食指 Left Index Finger",
+            "lowToHigh": "e",
+            "highToLow": "E"
+        },
+        "moveRight": {
+            "label": "右手食指 Right Index Finger",
+            "lowToHigh": "a",
+            "highToLow": "A"
+        },
+        "_probeYes": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "b",
+            "highToLow": "B"
+        },
+        "_probeNo": {
+            "label": "右手中指 Right Middle Finger",
+            "lowToHigh": "f",
+            "highToLow": "F"
+        },
+        "probeMaybe": {
+            "label": "左手拇指 Left Thumb",
+            "lowToHigh": "c",
+            "highToLow": "C"
+        },
+        "_reportFace": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "b",
+            "highToLow": "B"
+        },
+        "_reportObject": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "b",
+            "highToLow": "B"
+        },
+        "gamePause": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        },
+        "skipNarration": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        },
+        "debugToggleStats": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        }
+    },
+    "InputSerialPort_ResponseBox_OneHandL": {
+        "isResponseBox": false,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "moveLeft": {
+            "label": "左手食指 Left Index Finger",
+            "lowToHigh": "a",
+            "highToLow": "A"
+        },
+        "moveRight": {
+            "label": "右手食指 Right Index Finger",
+            "lowToHigh": "b",
+            "highToLow": "B"
+        },
+        "_probeYes": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "c",
+            "highToLow": "C"
+        },
+        "_probeNo": {
+            "label": "右手中指 Right Middle Finger",
+            "lowToHigh": "d",
+            "highToLow": "D"
+        },
+        "probeMaybe": {
+            "label": "左手拇指 Left Thumb",
+            "lowToHigh": "e",
+            "highToLow": "E"
+        },
+        "_reportFace": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "c",
+            "highToLow": "C"
+        },
+        "_reportObject": {
+            "label": "左手中指 Left Middle Fingerr",
+            "lowToHigh": "c",
+            "highToLow": "C"
+        },
+        "gamePause": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        },
+        "skipNarration": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        },
+        "debugToggleStats": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        }
+    },
+    "InputSerialPort_ResponseBox_OneHandR": {
+        "isResponseBox": false,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "moveLeft": {
+            "label": "左手食指 Left Index Finger",
+            "lowToHigh": "a",
+            "highToLow": "A"
+        },
+        "moveRight": {
+            "label": "右手食指 Right Index Finger",
+            "lowToHigh": "b",
+            "highToLow": "B"
+        },
+        "_probeYes": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "c",
+            "highToLow": "C"
+        },
+        "_probeNo": {
+            "label": "右手中指 Right Middle Finger",
+            "lowToHigh": "d",
+            "highToLow": "D"
+        },
+        "probeMaybe": {
+            "label": "左手拇指 Left Thumb",
+            "lowToHigh": "e",
+            "highToLow": "E"
+        },
+        "_reportFace": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "c",
+            "highToLow": "C"
+        },
+        "_reportObject": {
+            "label": "左手中指 Left Middle Finger",
+            "lowToHigh": "c",
+            "highToLow": "C"
+        },
+        "gamePause": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        },
+        "skipNarration": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        },
+        "debugToggleStats": {
+            "label": "KEY_NOT_BOUND",
+            "lowToHigh": "",
+            "highToLow": ""
+        }
+    },
+    "InputKeyCode_Keyboard_TwoHands": {
+        "isResponseBox": false,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "Action_Left": {
+            "_keyCodes": [
+                102
+            ],
+            "responseBoxDescription": ""
+        },
+        "Action_Right": {
+            "_keyCodes": [
+                106
+            ],
+            "responseBoxDescription": ""
+        },
+        "Probe_Maybe": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_Yes": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_No": {
+            "_keyCodes": [
+                105
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Face": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Object": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "Game_Pause": {
+            "_keyCodes": [
+                112
+            ],
+            "responseBoxDescription": ""
+        },
+        "Skip_Narration": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "Debug_ToggleStats": {
+            "_keyCodes": [
+                104
+            ],
+            "responseBoxDescription": ""
+        }
+    },
+    "InputKeyCode_Keyboard_OneHandL": {
+        "isResponseBox": false,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "Action_Left": {
+            "_keyCodes": [
+                102
+            ],
+            "responseBoxDescription": ""
+        },
+        "Action_Right": {
+            "_keyCodes": [
+                106
+            ],
+            "responseBoxDescription": ""
+        },
+        "Probe_Maybe": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_Yes": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_No": {
+            "_keyCodes": [
+                105
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Face": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Object": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "Game_Pause": {
+            "_keyCodes": [
+                112
+            ],
+            "responseBoxDescription": ""
+        },
+        "Skip_Narration": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "Debug_ToggleStats": {
+            "_keyCodes": [
+                104
+            ],
+            "responseBoxDescription": ""
+        }
+    },
+    "InputKeyCode_Keyboard_OneHandR": {
+        "isResponseBox": false,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "Action_Left": {
+            "_keyCodes": [
+                102
+            ],
+            "responseBoxDescription": ""
+        },
+        "Action_Right": {
+            "_keyCodes": [
+                106
+            ],
+            "responseBoxDescription": ""
+        },
+        "Probe_Maybe": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_Yes": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_No": {
+            "_keyCodes": [
+                105
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Face": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Object": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "Game_Pause": {
+            "_keyCodes": [
+                112
+            ],
+            "responseBoxDescription": ""
+        },
+        "Skip_Narration": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "Debug_ToggleStats": {
+            "_keyCodes": [
+                104
+            ],
+            "responseBoxDescription": ""
+        }
+    },
+    "InputKeyCode_ResponseBox_TwoHands": {
+        "isResponseBox": true,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "Action_Left": {
+            "_keyCodes": [
+                54
+            ],
+            "responseBoxDescription": "左手食指"
+        },
+        "Action_Right": {
+            "_keyCodes": [
+                49
+            ],
+            "responseBoxDescription": "右手食指"
+        },
+        "Probe_Maybe": {
+            "_keyCodes": [
+                53
+            ],
+            "responseBoxDescription": "左手拇指"
+        },
+        "_Probe_Yes": {
+            "_keyCodes": [
+                55
+            ],
+            "responseBoxDescription": "左手中指"
+        },
+        "_Probe_No": {
+            "_keyCodes": [
+                50
+            ],
+            "responseBoxDescription": "右手中指"
+        },
+        "_Report_Face": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Object": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "Game_Pause": {
+            "_keyCodes": [
+                112
+            ],
+            "responseBoxDescription": "KEY_NOT_BOUND"
+        },
+        "Skip_Narration": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": "KEY_NOT_BOUND"
+        },
+        "Debug_ToggleStats": {
+            "_keyCodes": [
+                104
+            ],
+            "responseBoxDescription": "KEY_NOT_BOUND"
+        }
+    },
+    "InputKeyCode_ResponseBox_OneHandL": {
+        "isResponseBox": false,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "Action_Left": {
+            "_keyCodes": [
+                50,
+                54
+            ],
+            "responseBoxDescription": "左手中指 Left Middle Finger"
+        },
+        "Action_Right": {
+            "_keyCodes": [
+                53,
+                51
+            ],
+            "responseBoxDescription": "左手食指 Left Index Finger"
+        },
+        "Probe_Maybe": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_Yes": {
+            "_keyCodes": [
+                49,
+                56
+            ],
+            "responseBoxDescription": "Left Ring Finger"
+        },
+        "_Probe_No": {
+            "_keyCodes": [
+                55,
+                52
+            ],
+            "responseBoxDescription": "左手拇指 Left Thumb"
+        },
+        "_Report_Face": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Object": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "Game_Pause": {
+            "_keyCodes": [
+                112
+            ],
+            "responseBoxDescription": ""
+        },
+        "Skip_Narration": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "Debug_ToggleStats": {
+            "_keyCodes": [
+                104
+            ],
+            "responseBoxDescription": ""
+        }
+    },
+    "InputKeyCode_ResponseBox_OneHandR": {
+        "isResponseBox": false,
+        "debug": false,
+        "navButtonsAffectedByFlipping": false,
+        "useProbeYesForReplayLevelReporting": true,
+        "reportComment": "If useProbeYesForReplayLevelReporting is set to true, _Probe_Yes is used for reporting. If set to false, the keys below are used instead",
+        "Action_Left": {
+            "_keyCodes": [
+                50,
+                54
+            ],
+            "responseBoxDescription": "右手食指 Right Index Finger"
+        },
+        "Action_Right": {
+            "_keyCodes": [
+                53,
+                51
+            ],
+            "responseBoxDescription": "右手中指 Right Middle Finger"
+        },
+        "Probe_Maybe": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Probe_Yes": {
+            "_keyCodes": [
+                49,
+                56
+            ],
+            "responseBoxDescription": "右手拇指 Right Thumb"
+        },
+        "_Probe_No": {
+            "_keyCodes": [
+                55,
+                52
+            ],
+            "responseBoxDescription": "Right Ring Finger"
+        },
+        "_Report_Face": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "_Report_Object": {
+            "_keyCodes": [
+                101
+            ],
+            "responseBoxDescription": ""
+        },
+        "Game_Pause": {
+            "_keyCodes": [
+                112
+            ],
+            "responseBoxDescription": ""
+        },
+        "Skip_Narration": {
+            "_keyCodes": [
+                32
+            ],
+            "responseBoxDescription": ""
+        },
+        "Debug_ToggleStats": {
+            "_keyCodes": [
+                104
+            ],
+            "responseBoxDescription": ""
+        }
+    },
+    "EyeTracking": {
+        "trackerType_Comment": "EyeLink = 0 , Tobii = 1",
+        "trackerType": 0,
+        "disableVerboseEventMessages_Comment": "Prevents the old multi-line messages about events (that since 21/09/20 we send triggers for)",
+        "disableVerboseEventMessages": true,
+        "gazeValidThreshold": 0.20000000298023225,
+        "blinkTimeLimitMS": 1250,
+        "closeSystemAtQuit": true,
+        "acceptOneEyedData": true,
+        "allowDebugOnRelease": true,
+        "calibrationTargets_Normalized": [
+            {
+                "x": 0.5,
+                "y": 0.5600000023841858
+            },
+            {
+                "x": 0.5,
+                "y": 0.3700000047683716
+            },
+            {
+                "x": 0.5,
+                "y": 0.7400000095367432
+            },
+            {
+                "x": 0.33000001311302187,
+                "y": 0.5600000023841858
+            },
+            {
+                "x": 0.6600000262260437,
+                "y": 0.5600000023841858
+            },
+            {
+                "x": 0.33000001311302187,
+                "y": 0.3700000047683716
+            },
+            {
+                "x": 0.6600000262260437,
+                "y": 0.3700000047683716
+            },
+            {
+                "x": 0.33000001311302187,
+                "y": 0.7400000095367432
+            },
+            {
+                "x": 0.6600000262260437,
+                "y": 0.7400000095367432
+            }
+        ],
+        "EXPERIMENTER_DEBUG_GAZE_POSITION_COMMENT": "PRESS TO SHOW WHERE THE SUBJECT IS LOOKING",
+        "EXPERIMENTER_DEBUG_GAZE_POSITION": 288,
+        "EXPERIMENTER_USE_MOUSE_FOR_GAZE_MODIFIER_COMMENT": "IF HELD WHILE PRESSING THE BUTTON ABOVE, MAPS THE MOUSE TO THE GAZE",
+        "EXPERIMENTER_USE_MOUSE_FOR_GAZE_MODIFIER": 304,
+        "EXPERIMENTER_USE_MOUSE_FOR_GAZE_SACADA_KEY_COMMENT": "HOLD DOWN TO SIMULATE STARTING A SACADA, RELEASE TO SIMULATE ENDING IT. ONLY AVAILABLE WHILE IN MOUSE-FOR-GAZE MODE.",
+        "EXPERIMENTER_USE_MOUSE_FOR_GAZE_SACADA_KEY": 32,
+        "get_Comment": "GetSamples / Sacades / Blinks disables the requesting of that type of sample / event from the tracker",
+        "getSamples": true,
+        "getSacades": true,
+        "getBlinks": true,
+        "createFakeTrackingFileWhenNotConnectedRelease": false,
+        "logDisplayedDebugInfo": true,
+        "writingStrategy_Comment": "None = 0, PerLevel = 1, PerTwoLevels = 2, PerWorld = 3, PerSubject = 4",
+        "writingStrategy_MEEG": 3,
+        "writingStrategy_ECOG": 3,
+        "writingStrategy_FMRIPreparation": 0,
+        "writingStrategy_MEEGPreparation": 0,
+        "writingStrategy_FMRIScanner": 2,
+        "enabled_MEEG": true,
+        "enabled_MEEG_Preparation": false,
+        "enabled_ECOG": true,
+        "enabled_FMRI": true,
+        "enabled_FMRI_Preparation": false,
+        "heatmapType_Comment": "Gaze = 0, Sacade = 1",
+        "heatmapType": 0,
+        "showHeatmapAfterLevel": true,
+        "maxPercentileDisconnectForWarning": 0.009999999776482582,
+        "maxPercentileNoDataForWarning": 0.029999999329447748,
+        "pauseDuringEyeTrackingCalibration": true,
+        "unPauseAfterEyeTrackingCalibration": true
+    },
+    "EyeLink": {
+        "useSimulation": false,
+        "validDataThreshold": {
+            "x": -10000,
+            "y": 10000
+        },
+        "pixelCoordinates": {
+            "enabled": true,
+            "comment": "screen_pixel_coords = 0 0 1 1 | defined in the 01 space, x gets multiplied by Screen.width, y by Screen.height",
+            "bottomLeft01": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "topRight01": {
+                "x": 1.0,
+                "y": 1.0
+            }
+        },
+        "calibrationAreaProportion": {
+            "enabled": true,
+            "comment": "[SOS] Enabling this ignores the targets defined in EyeTracking above | 'calibration_area_proportion = 0.88 0.83' % default: 0.88 0.83",
+            "limits01": {
+                "x": 0.8799999952316284,
+                "y": 0.8299999833106995
+            }
+        },
+        "validationAreaProportion": {
+            "enabled": true,
+            "comment": "'validation_area_proportion = 0.88 0.83' % default: 0.88 0.83",
+            "limits01": {
+                "x": 0.8799999952316284,
+                "y": 0.8299999833106995
+            }
+        },
+        "binocularEnabled": {
+            "enabled": true,
+            "comment": "'binocular_enabled = true / false",
+            "binocularEnabled": true
+        },
+        "enableAutomaticCalibration": {
+            "enabled": true,
+            "comment": "'enable_automatic_calibration = YES' % OR NO",
+            "automaticCalibrationEnabled": true
+        },
+        "calibrationType": {
+            "enabled": true,
+            "comment": "'calibration_type = HV13' % OR HV5 OR HV9, number of points for calibration",
+            "calibrationType": 9
+        },
+        "parserConfigurationCommand": {
+            "enabled": true,
+            "comment": "'select_parser_configuration = <set> | <set>: 0 for standard, 1 for high sensitivity saccade detector configuration |",
+            "parserConfiguration": 0
+        },
+        "parserOverride_saccadeVelocityThreshold": {
+            "enabled": false,
+            "comment": "'saccade_velocity_threshold = 22’ % Setting the velocity threshold for saccade",
+            "threshold": 22
+        },
+        "parserOverride_saccadeAccelerationThreshold": {
+            "enabled": false,
+            "comment": "'saccade_acceleration_threshold = 3800 | Setting the acceleration threshold for saccade |",
+            "threshold": 3800
+        },
+        "parserOverride_saccadeMotionThreshold": {
+            "enabled": false,
+            "comment": "'saccade_motion_threshold=0.0 | Setting the motion threshold for saccade |",
+            "threshold": 0.0
+        },
+        "parserOverride_saccadePursuitFixup": {
+            "enabled": false,
+            "comment": "'saccade_pursuit_fixup=60 | Setting the pursuit dixup for saccade |",
+            "fixup": 60
+        },
+        "parserOverride_fixationUpdateInterval": {
+            "enabled": false,
+            "comment": "'fixation_update_interval=0 | Setting the fixation update interval |",
+            "interval": 0
+        },
+        "parserOverride_fixationUpdateAccumulate": {
+            "enabled": false,
+            "comment": "'fixation_update_accumulate=0 | Setting the fixation update accumulate |",
+            "accumulate": 0
+        },
+        "fileEventFilter": {
+            "enabled": true,
+            "comment": "'file_event_filter = LEFT,RIGHT,FIXATION,SACCADE,BLINK,MESSAGE,BUTTON,INPUT'",
+            "leftEnabled": true,
+            "rightEnabled": true,
+            "fixationEnabled": true,
+            "saccadeEnabled": true,
+            "blinkEnabled": true,
+            "messageEnabled": true,
+            "buttonEnabled": true,
+            "inputEnabled": true
+        },
+        "fileSampleData": {
+            "enabled": true,
+            "comment": "‘file_sample_data = LEFT,RIGHT,GAZE,HREF,RAW,AREA,HTARGET,GAZERES,BUTTON,STATUS,INPUT'",
+            "leftEnabled": true,
+            "rightEnabled": true,
+            "gazeEnabled": true,
+            "hrefEnabled": true,
+            "rawEnabled": true,
+            "areaEnabled": true,
+            "htargetEnabled": true,
+            "gazeresEnabled": true,
+            "buttonEnabled": true,
+            "statusEnabled": true,
+            "inputEnabled": true
+        },
+        "linkEventFilter": {
+            "enabled": true,
+            "comment": "link_event_filter = LEFT,RIGHT,FIXATION,SACCADE,BLINK,MESSAGE,BUTTON,FIXUPDATE,INPUT'",
+            "leftEnabled": true,
+            "rightEnabled": true,
+            "fixationEnabled": true,
+            "saccadeEnabled": true,
+            "blinkEnabled": true,
+            "messageEnabled": true,
+            "buttonEnabled": true,
+            "fixupdateEnabled": true,
+            "inputEnabled": true
+        },
+        "linkSampleData": {
+            "enabled": true,
+            "comment": "link_sample_data = LEFT,RIGHT,GAZE,GAZERES,AREA,HTARGET,STATUS,INPUT",
+            "leftEnabled": true,
+            "rightEnabled": true,
+            "gazeEnabled": true,
+            "gazeresEnabled": true,
+            "areaEnabled": true,
+            "htargetEnabled": true,
+            "statusEnabled": true,
+            "inputEnabled": true
+        },
+        "sampleRate": {
+            "enabled": true,
+            "comment": "'sample_rate = 500 % OR 1000 | Setting the sample rate |",
+            "sampleRate": 1000
+        },
+        "useEllipseFitter": {
+            "enabled": true,
+            "comment": "'use_ellipse_fitter = true / false'",
+            "useEllipseFitter": false
+        },
+        "elclTtPower": {
+            "enabled": false,
+            "comment": "'elcl_tt_power = 2' % 1 is 100% illumination, 2 is 75% and 3 50%",
+            "elclTtPowerPercentage": 2
+        },
+        "screenPhysicalCoordinates": {
+            "enabled": true,
+            "comment": "'screen_phys_coords=[left, top, right, bottom]' | to set the screen size in mm, MEASURED FROM THE CENTER OF THE SCREEN",
+            "left": -320,
+            "top": 180,
+            "right": 320,
+            "bottom": -180
+        },
+        "screenDistance": {
+            "enabled": true,
+            "comment": "'screen_distance=[Top Bottom] % Distance between participants eyes and top and bottom of screen IN MM",
+            "top": 1000.0,
+            "bottom": 1000.0
+        },
+        "remoteCameraPosition": {
+            "enabled": false,
+            "comment": "‘remote_camera_position = -10 17 80 60 –90’) | Setting the  % Distance between the screen and the tracker IN MM, important for remote mode only",
+            "int5": -90
+        },
+        "extraCommands_Comment": "These are sent 'as-is' to the EyeLink. Use carefully. Empty commands are ignored.",
+        "sendExtraCommands": false,
+        "extraCommands": [
+            "",
+            ""
+        ],
+        "sendCloseEyelinkSystemCommandAtExeShutdown_Comment": "Sends the close_eyelink_system command to eyelink when the game exits for whatever reason",
+        "sendCloseEyelinkSystemCommandAtExeShutdown": true
+    },
+    "Tobii": {
+        "sdkConfig": {
+            "syncMode_Comment": "Latest = 0, Best = 1 | Latest keeps the latest sync value, while Best compares jitter and drift differences to dynamically pick the best sync value. Default is Best.",
+            "syncMode": 1,
+            "driftPercentile": 0.000009999999747378752
+        },
+        "useRayScreen": false,
+        "calibrateHorizontalRay": {
+            "x": -0.3100000023841858,
+            "y": 0.3100000023841858
+        },
+        "calibrateHorizontalDisplay": {
+            "x": 0.0,
+            "y": 1.0
+        },
+        "calibrateVerticalRay": {
+            "x": 0.8299999833106995,
+            "y": 1.159999966621399
+        },
+        "calibrateVerticalDisplay": {
+            "x": 1.0,
+            "y": 0.0
+        }
+    },
+    "Audio": {
+        "debug": false,
+        "useAudioMixer": true,
+        "localizerSounds_Response": false,
+        "muteTriggersToo": false,
+        "startMuted": false,
+        "ResponseReward": {
+            "enabled": true,
+            "name": "SFXBeepPositive.wav",
+            "volume": 1.0
+        },
+        "ResponsePenalty": {
+            "enabled": true,
+            "name": "253886__themusicalnomad__negative-beeps.wav",
+            "volume": 0.29999998211860659
+        },
+        "FixationBreak": {
+            "enabled": true,
+            "name": "158427__ramicio__dial-tone.wav",
+            "volume": 0.699999988079071
+        },
+        "eyeTrackerNoConnection": 0.0,
+        "eyeTrackerNoDataWarningVolume": 0.0,
+        "eyeTrackerBlinkVolume": 0.0,
+        "eyeTrackerOutOfScreenVolume": 0.0,
+        "eyeTrackerOffFixationVolume": 0.0,
+        "Volume": 1.0
+    },
+    "Logging": {
+        "obscureDateInGeneralInfo": true,
+        "obscureTimeInGeneralInfo": true,
+        "overrideFixedUpdateInterval": true,
+        "fixedUpdateIntervalMS": 5,
+        "logger": {
+            "logHighAccuracyInputDump": false,
+            "logSerialDump": true,
+            "logWrapper": {
+                "doFullLogs": true,
+                "maxNumAttemptsPerBatch": 0,
+                "FriendlyDateString": "HHmmss",
+                "backgroundWriterConfig": {
+                    "doDebug": false,
+                    "backgroundDataWriteChunk": 300
+                }
+            },
+            "heatmap": {
+                "colorBackgroundFile": "#00000000",
+                "colorGazesFile": "#ff0000ff",
+                "colorSacadasFile": "#0000ffff",
+                "colorBackgroundUI": "#ffffffff",
+                "colorGazesUI": "#ff0000ff",
+                "colorSacadasUI": "#0000ffff"
+            }
+        },
+        "timescale": {
+            "timeScaleSuperFast": 25.0,
+            "timeScaleFast": 3.0,
+            "allowLogsFast": true,
+            "timeScaleSlow": 0.25,
+            "timeScaleSuperSlow": 0.02500000037252903
+        },
+        "doEndOfLevelLoggingReport": true
+    },
+    "LoggingTesting": {
+        "enabled": false,
+        "debugLevel_Comment": "None = 0, PerLevel = 1, Realtime = 2",
+        "debugLevel": 2,
+        "debugEverySeconds": 5.0,
+        "analyzer": {
+            "logData_FromSender": "",
+            "doAnalytics": true
+        }
+    },
+    "Report": {
+        "reactionWindowMS": 1000
+    },
+    "Probes": {
+        "keepMusicOnDuringProbes": true,
+        "showProbes": true,
+        "use3Buttons": false,
+        "scaleNumProbesToNumWorlds_Comment": "Default number of worlds is 4. For some setups, this is reduced to 2. When that happens, should we show proportionately less probes?",
+        "scaleNumProbesToNumWorlds": true,
+        "wantedNumProbes_4Worlds_Comment": "Default number of worlds is 4. How many probes should 4 worlds have in total?",
+        "wantedNumProbes_4Worlds": 200,
+        "probeShieldBeforeEndOfLevelMS": 1000,
+        "probeDelayAfterStimulusMS": 0.0,
+        "probeTimeoutMS": 3000,
+        "probeNoAnswerInFirstMS": 200,
+        "earlyOutWorldWhenProbesComplete": false,
+        "colorMainHex": "CACACA",
+        "colorTipsHex": "FFD600",
+        "expConfig": {
+            "λ": 0.6164000034332275,
+            "min": 12.0,
+            "max": 18.0,
+            "numBins": 100
+        },
+        "expConfig_FMRIScanner": {
+            "λ": 0.6164000034332275,
+            "min": 12.0,
+            "max": 18.0,
+            "numBins": 100
+        },
+        "crossDefaultsInFront": true,
+        "crossSizeMultiplier": 1.0,
+        "crossSizeVerticalPos_Multiplier_Comment": "[DEV-ONLY] Do not change this value",
+        "minResetT_Threshold": 0.10000000149011612,
+        "minResetT_maxSearch": 10,
+        "arrowBetweenCircleAndTarget": 1.0,
+        "acceptableNumberofBlanksFalseAlarmsPractice_Full": 1,
+        "acceptableNumberofBlanksFalseAlarmsPractice_PrepScreening": 1,
+        "numProbesInPractice_Full": 8,
+        "numProbesInPractice_PrepScreening": 8
+    },
+    "Subject": {
+        "TEXT_DD_COMMENT": "Those appear in the drop-down of the subject window",
+        "TEXT_DD_NO_OPTION": "FRESH OR RESUME?",
+        "TEXT_DD_NEW_RUN": "START FRESH",
+        "TEXT_DD_EXISTING_COMMENT": "Run number will be inserted at {0}",
+        "TEXT_DD_EXISTING": "RESUME {0}",
+        "reactionTimeMS": 300,
+        "reactionSpeedMinMax": {
+            "min": 200.0,
+            "max": 400.0
+        },
+        "reactionSpeedInteractableMultiplierMinMan": {
+            "min": 0.6700000166893005,
+            "max": 1.5
+        },
+        "getDemographicFields": false,
+        "mandatoryFieldsMarking": " (*)",
+        "noAnswer": "No Answer",
+        "placeHolderString_Comment": "Shown in text fields where the player hasn't typed something yet. {0} will be replaced by the field's name.",
+        "placeHolderString": "Enter Subject's {0}",
+        "fieldsToQuery": [
+            {
+                "name": "Age",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "int"
+                ]
+            },
+            {
+                "name": "Gender",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "Male",
+                    "Female",
+                    "Other"
+                ]
+            },
+            {
+                "name": "Dominant Hand",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "Right",
+                    "Left",
+                    "Neither"
+                ]
+            },
+            {
+                "name": "Visual Acuity",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "No Glasses",
+                    "Glasses",
+                    "Contacts"
+                ]
+            },
+            {
+                "name": "Dominant Eye",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "Right",
+                    "Left",
+                    "Neither"
+                ]
+            },
+            {
+                "name": "Diopter of Lenses",
+                "isMandatory": false,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "string"
+                ]
+            },
+            {
+                "name": "Color Blindness",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "None",
+                    "Deuteranomaly",
+                    "Protanomaly",
+                    "Protanopia",
+                    "Deuteranopia",
+                    "Tritanomaly",
+                    "Tritanopia",
+                    "Monochromacy"
+                ]
+            },
+            {
+                "name": "Level of Education",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "None",
+                    "Primary",
+                    "Secondary",
+                    "Tertiary"
+                ]
+            },
+            {
+                "name": "Ethnicity",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "string"
+                ]
+            },
+            {
+                "name": "Primary Language",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "string"
+                ]
+            },
+            {
+                "name": "Secondary Language",
+                "isMandatory": true,
+                "isEnabled": true,
+                "possibleAnswers": [
+                    "string"
+                ]
+            },
+            {
+                "name": "Auditory Sensitivity",
+                "isMandatory": true,
+                "isEnabled": false,
+                "possibleAnswers": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            {
+                "name": "Known Medical Conditions",
+                "isMandatory": false,
+                "isEnabled": false,
+                "possibleAnswers": [
+                    "string"
+                ]
+            },
+            {
+                "name": "Current Medications",
+                "isMandatory": false,
+                "isEnabled": false,
+                "possibleAnswers": [
+                    "string"
+                ]
+            }
+        ]
+    },
+    "Difficulty": {
+        "initialDifficulty": 0.20000000298023225,
+        "minEssencesToTrustCurrentPerformance": 75,
+        "dPrimeAtStartOfLevel": 0.0,
+        "discountType": 1,
+        "adaptationMode_Comment": "Debug = -1, None = 0, Direct = 1, Indirect = 2",
+        "adaptationMode": 2,
+        "dPrimeToDifficulty0": -0.800000011920929,
+        "dPrimeToDifficulty1": 0.800000011920929,
+        "indirectType": 2,
+        "targetDPrime_Lower": 7.450580596923828e-8,
+        "targetDPrime_Upper": 0.30000001192092898,
+        "adaptMinToMax_Seconds": 105.0,
+        "adaptMaxToMin_Seconds": 105.0,
+        "averageUpdateMode": 0,
+        "weightOfAveragevsCurrentPerLevel": 4,
+        "weightPerLevel_MinMax": {
+            "min": 0.30000001192092898,
+            "max": 0.699999988079071
+        },
+        "averageSourceComment": "The d' to be used when calculating average d' (0: Momentary d', 1: Final d')",
+        "averageSource": 0,
+        "evaluationWindow_NumAnimCycles": 12
+    },
+    "Money": {
+        "showMoney": false,
+        "format": "#.00",
+        "wantedMoneyStart": 5.0,
+        "wantedMoneyPerStar": 0.5,
+        "wantedMoneyPerPoint": 0.05000000074505806,
+        "wantedMoneyPerCompletedWorld": 5.0,
+        "wantedMoneyEnd": 5.0
+    },
+    "UI": {
+        "prepFull_Comment": "These appear to the experimenter before loading the game",
+        "behavioralScreeningTitle": "BEHAVIORAL\nSCREENING",
+        "screeningDesc": "Play a screening round",
+        "inScannerPrepTitle": "IN-SCANNER\nPREPARATION",
+        "prepDesc": "Play a short prep round",
+        "fullGameTitle": "IN-SCANNER\nFULL GAME",
+        "fullDesc": "Play the entire experiment",
+        "showScreeningButton": true,
+        "showPreparationButton": false,
+        "allPopups_onlyProceedViaClick_Behavioral": false,
+        "allPopups_onlyProceedViaClick_Experimental": true,
+        "dialogueYes_onlyProceedViaClick_Behavioral": true,
+        "dialogueYes_onlyProceedViaClick_Experimental": true,
+        "popUpTimeout_LevelComplete_FMRI": 5.0,
+        "popUpTimeout_LevelComplete_NONFMRI": 300.0,
+        "showGeneralTips": false,
+        "inGameMenuQuitConfirmation": "Would you like to quit level and return to level selection?",
+        "quitConfirmation": "Would you like to exit the game?",
+        "showTimerComment": "Never = 0, Constantly = 1, AtTheStartOnly =2",
+        "showTimer": false,
+        "showGameplayTips": false,
+        "gameplayTipsDuration_MS": 5000.0,
+        "inGameShowExitButton": false,
+        "popupScaleAtZoom1": 0.925000011920929,
+        "confirmationScaleAtZoom1": 0.6000000238418579,
+        "showPerfAndDIffInRelease": false,
+        "showMuteDuringLevel": true,
+        "showEyeTrackingDuringLevel": true
+    },
+    "Texts": {
+        "textsFormatting_Comment": "You can use the following notations to <b>bold</b>, <i>italicize</i>, <size=32>scale</size> and <color='#FF9900'>color</color> text - more info at https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/StyledText.html",
+        "allowClsoeViaEscape_PopUps": false,
+        "onlyAllowProceedThroughMouse_PopUps": false,
+        "popupOkayText": "OK",
+        "popupOkayText_mouseOnly": "WAIT",
+        "onlyAllowProceedThroughMouse_LevelSelection": false,
+        "menuProceedInstructions": "请按 {0} 键继续",
+        "menuProceedInstructions_mouseOnly": "Wait Before Next Level",
+        "menuProceedInstructions_LOCKED": "Wait Before Next Level",
+        "tutorialWelcome_KeyboardInput": {
+            "title": "教程",
+            "description": "感谢您参加我们的实验！\n\n在本实验中，您将完成一个简单的小游戏。\n\n在游戏过程中，您可以通过按键{0} 和{1}来控制屏幕下方的一个色环。\n\n尽可能多的收集与色环颜色相同的下落物体，而尽可能避开那些不同颜色物体。\n\n用您的左手食指按{0}键，右手食指按 {1}键，来左右移动色环位置。\n\n 最后，请始终保持眼睛盯在屏幕中央的白色注视点上，\n\n同时用您的余光去进行游戏。\n\n如果您有任何疑问，请立即向主试提出。祝您好运！",
+            "minimumDurationMS": 0
+        },
+        "tutorialWelcome_ResponseBoxInput": {
+            "title": "教程",
+            "description": "感谢您参加我们的实验！\n\n在本实验中，您将完成一个简单的小游戏。\n\n在游戏过程中，您可以通过按键{0} 和{1}来控制屏幕下方的一个色环。\n\n尽可能多的收集与色环颜色相同的下落物体，而尽可能避开那些不同颜色物体。\n\n用您的左手食指按{0}键，右手食指按{1}键，来左右移动色环位置。\n\n 最后，请始终保持眼睛盯在屏幕中央的白色注视点上，\n\n同时用您的余光去进行游戏。\n\n如果您有任何疑问，请立即向主试提出。祝您好运！",
+            "minimumDurationMS": 0
+        },
+        "levelCompleted_Tutorial_Generic": {
+            "title": "通关成功!",
+            "description": "恭喜！\n\n你已完成这部分教程！\n\n",
+            "minimumDurationMS": 0
+        },
+        "informationWelcome": {
+            "title": "教程",
+            "description": "",
+            "minimumDurationMS": 0
+        },
+        "practiceTutorialMessage_Screening_2Buttons": {
+            "title": "教程",
+            "description": "我们首先进行一个简短的练习。\n\n在这次游戏过程中，会额外呈现一些探测图片。\n\n也就是说，游戏背景中会出现一些与游戏无关的随机图片（比如人脸、物体等等）。\n\n有时候你可能会注意到这些图片的存在，而有时候你可能注意不到（还有些时候,并没有呈现图片）。\n\n每当游戏暂停时，如果你之前看到了<b>一张人脸或者一个物体</b>，请按<b><color='#FF9900'>'{0}'</color></b> 键；\n\n如果你之前什么也没有看到，请按'{1}'键。\n\n要想玩好这个游戏，你需要把注意都集中在游戏操作上。\n\n我们只要求你如实报告是否看见探测图片。这些报告并没有正确答案。\n\n请将你的手始终放在按键器上。\n\n如果你有任何问题，请及时向主试提出…祝你好运！",
+            "minimumDurationMS": 0
+        },
+        "practiceTutorialMessage_Screening_3Buttons": {
+            "title": "教程",
+            "description": "我们首先进行一个简短的练习。\n\n在这次游戏过程中，会额外呈现一些探测图片。\n\n也就是说，游戏背景中会出现一些与游戏无关的随机图片（比如人脸、物体等等）。\n\n有时候你可能会注意到这些图片的存在，而有时候你可能注意不到（还有些时候，并没有呈现图片）。\n\n每当游戏暂停时，如果你之前看到了一张人脸或者一个物体，请按'{0}' 键；\n\n如果你看到了一些东西，但不确定具体是什么内容，请按'{2}'键；\n\n如果你什么也没看到，请按'{1}'键。\n\n要想玩好这个游戏，你需要把注意都集中在游戏操作上。\n\n我们只是要求你如实报告是否看见探测图片。这些报告并没有正确的答案。\n\n请将你的手始终放在按键器上\n\n如果你有任何问题，请及时向主试提出…祝你好运！",
+            "minimumDurationMS": 0
+        },
+        "practiceTutorialMessage_Full_2Buttons": {
+            "title": "教程",
+            "description": "我们首先进行一个简短的练习。\n\n在这次游戏过程中，会额外呈现一些探测图片。\n\n也就是说，游戏背景中会出现一些与游戏无关的随机图片（比如人脸、物体等等）。\n\n有时候你可能会注意到这些图片的存在，而有时候你可能注意不到（还有些时候,并没有呈现图片）。\n\n每当游戏暂停时，如果你之前看到了<b>一张人脸或者一个物体</b>，请按<b><color='#FF9900'>'{0}'</color></b> 键；\n\n如果你之前什么也没有看到，请按'{1}'键。\n\n要想玩好这个游戏，你需要把注意都集中在游戏操作上。\n\n我们只要求你如实报告是否看见探测图片。这些报告并没有正确答案。\n\n请将你的手始终放在按键器上。\n\n如果你有任何问题，请及时向主试提出…祝你好运！",
+            "minimumDurationMS": 0
+        },
+        "practiceTutorialMessage_Full_3Buttons": {
+            "title": "教程",
+            "description": "我们首先进行一个简短的练习。\n\n在这次游戏过程中，会额外呈现一些探测图片。\n\n也就是说，游戏背景中会出现一些与游戏无关的随机图片（比如人脸、物体等等）。\n\n有时候你可能会注意到这些图片的存在，而有时候你可能注意不到（还有些时候，并没有呈现图片）。\n\n每当游戏暂停时，如果你之前看到了一张人脸或者一个物体，请按'{0}' 键；\n\n如果你看到了一些东西，但不确定具体是什么内容，请按'{2}'键；\n\n如果你什么也没看到，请按'{1}'键。\n\n要想玩好这个游戏，你需要把注意都集中在游戏操作上。\n\n我们只是要求你如实报告是否看见探测图片。这些报告并没有正确的答案。\n\n请将你的手始终放在按键器上\n\n如果你有任何问题，请及时向主试提出…祝你好运！",
+            "minimumDurationMS": 0
+        },
+        "levelCompleted_Tutorial_PracticeShowExtendedMessage": true,
+        "levelCompleted_Tutorial_PracticeExtended_Success": {
+            "title": "通关成功!",
+            "description": "恭喜！\n\n你已完成这部分教程。\n\n可以进入第 1 关。",
+            "minimumDurationMS": 0
+        },
+        "levelCompleted_Tutorial_PracticeExtended_Failure": {
+            "title": "通关成功",
+            "description": "太多虚报 ({0}).\n\n建议重新阅读指导语，并重做练习部分。",
+            "minimumDurationMS": 0
+        },
+        "firstProbeInstructions_2Buttons": "你在箭头方向是否看到了人脸或物体？\n\n如果看到，请按{0} 键，回答“是”\n如果没有看到，请按{1} 键，回答“否”。",
+        "firstProbeInstructions_3Buttons": "你在箭头方向是否看到了人脸或物体？\n\n如果确定看到了人脸或物体，请按{0} 键，回答“是”。\n如果看到了类似的东西，但不确定具体是什么内容，请按{2} 键，回答“是”。\n如果确定什么也没有看到，请按{1} 键",
+        "welcomeMessage_1_1": {
+            "title": "指导语",
+            "description": "欢迎来到世界1。 请尽可能多的收集{0}下落圆球来赚取点数。",
+            "minimumDurationMS": 3
+        },
+        "welcomeMessage_2_1": {
+            "title": "指导语",
+            "description": "在接下来的世界2中，你将控制一个<color='#FF9900'>{0}</color>圆球。\n\n请尽可能多的收集下落的{0}圆球，并且避免触碰到下落的{1}圆球。这样你可以赚取更多点数。\n\n提醒：请注意，现在下落的圆球可以从一个轨道向另一个轨道跳跃。\n\n",
+            "minimumDurationMS": 3
+        },
+        "welcomeMessage_3_1": {
+            "title": "指导语",
+            "description": "在接下来的世界3中，你将重新控制{0}圆球。\n\n请注意，下落圆球可能在不同轨道间更频繁的跳跃。\n\n而你现在有一个特殊技能：每当你看到屏幕中央 + 右边出现一个黄色小点时，\n\n如果你控制的色球已经在最右的轨道上，如果你再按往右的按键，\n\n你就可以把屏幕上所有下落的{1}圆球一键清除。合理使用这项新技能吧！",
+            "minimumDurationMS": 3
+        },
+        "welcomeMessage_4_1": {
+            "title": "指导语",
+            "description": "最后一个世界里，你可以控制一个{0}圆球。\n\n有些下落的圆球会在不同轨道上跳跃。\n\n你仍然拥有通过按键向最右边移动来清除屏幕上所有障碍物的技能。\n\n在游戏过程中，当屏幕中央 + 右边出现小蓝点时，提示你可以使用这项技能了。\n\n另外，你会有另一个新技能：每当你看到屏幕中央 + 左边出现小黄点时，\n\n并且当你控制的色球在轨道最左边时，通过按键向更左的方向移动，\n\n你可以收集当前屏幕上降落的所有{0}圆球。\n\n使用上面两种技能来赚取更多点数吧！",
+            "minimumDurationMS": 3
+        },
+        "welcomeMessage_InputsFlippedAppendix": "<b>--=按键现已<color='#FF9900'>翻转</color>==-\n请按 <color='#FF9900'>{0}</color> 回答“是”，请按 <color='#FF9900'>{1}</color> 回答“否”。</b>\n",
+        "levelCompleted": {
+            "title": "通关成功！",
+            "description": "恭喜！\n\n你来到了第 {0} 关。\n\n",
+            "minimumDurationMS": 0
+        },
+        "levelCompleted_Pair": {
+            "title": "通关成功！",
+            "description": "恭喜！\n\n你已完成第 {0} 关和第 {1} 关。\n\n",
+            "minimumDurationMS": 0
+        },
+        "showProbesEarlyOutMessage": false,
+        "levelCompleted_ProbesEarlyOut": {
+            "title": "通关成功！",
+            "description": "恭喜你通过了本关!\n由于探测刺激已全部呈现完毕，本关提前完成！",
+            "minimumDurationMS": 0
+        },
+        "levelCompleted_GameCompleted": {
+            "title": "游戏挑战成功!",
+            "description": "恭喜！\n\n你已成功抵达游戏终点!",
+            "minimumDurationMS": 0
+        },
+        "fmriReplayBetweenLevels_Faces": {
+            "title": "Level Completed!",
+            "description": "<b>In the next level you will respond to <color='FF9900'>FACES</color></b>.\nDo not press anything when you see an object. Next level will start automatically.",
+            "minimumDurationMS": 0
+        },
+        "fmriReplayBetweenLevels_Objects": {
+            "title": "Level Completed!",
+            "description": "<b>In the next level you will respond to <color='FF9900'>OBJECTS</color></b>.\nDo not press anything when you see a face. Next level will start automatically.",
+            "minimumDurationMS": 0
+        },
+        "eyeLink_HeatmapTitle": "Heatmap for Level {0}",
+        "eyeLink_NotConnected": {
+            "title": "Eye Tracker Report",
+            "description": "Tracker Not Connected!\n\nRight now, it is enabled but not connected.\n\nAttempting to Re-Connect.",
+            "minimumDurationMS": 0
+        },
+        "eyeLink_Connected_ConnLostDuringLastLevel": {
+            "title": "Eye Tracker Report",
+            "description": "Lost Connection during Last Level\n\nRight now, it is connected.",
+            "minimumDurationMS": 0
+        },
+        "eyeLink_Connected_DataLostDuringLastLevel": {
+            "title": "Eye Tracker Report",
+            "description": "Lost Tracking during Last Level\n\nRight now, it is connected.",
+            "minimumDurationMS": 0
+        },
+        "instructionTaskRelevant_Faces": {
+            "title": "回放关卡",
+            "description": "接下来，你会看到一次游戏的模拟回放。\n\n在这个过程中，你将不再能够控制蓝色或黄色圆球。\n\n请你将注意力集中在背景中呈现的人脸和物体上。\n\n每当你看到<color='#FF9900'>人脸</color>时，请按 <color='#FF9900'>'{0}' </color>键。\n而当你看到物体时，请不要按任何按键。\n\n切记将眼睛始终盯在中央注视点“X”上。祝你好运!",
+            "minimumDurationMS": 0
+        },
+        "instructionTaskRelevant_Faces_Inverted": {
+            "title": "回放关卡",
+            "description": "接下来，你会看到一次游戏的模拟回放。\n\n在这个过程中，你将不再能够控制蓝色或蓝色色环。\n\n请你将注意力集中在背景中呈现的人脸和物体上。\n\n<b>输入现已翻转。\n每当你看到<color='#FF9900'>人脸</color>时，请按<color='#FF9900'>'{0}'</color> 键。</b>\n而当你看到物体时，请不要按任何按键。\n\n切记将眼睛始终盯在中央注视点“X”上。祝你好运！",
+            "minimumDurationMS": 0
+        },
+        "instructionTaskRelevant_Objects": {
+            "title": "回放关卡",
+            "description": "接下来，你会看到一次游戏的模拟回放。\n\n在这个过程中，你将不再能够控制蓝色或蓝色色环。\n\n请你将注意力集中在背景中呈现的人脸或物体上。\n\n每当你看到<color='#FF9900'>物体</color>时，请按<color='#FF9900'>'{0}'</color> 键。\n而当你看到人脸时，请不要按任何按键。\n\n切记将眼睛始终盯在中央注视点“X”上。祝你好运!",
+            "minimumDurationMS": 0
+        },
+        "instructionTaskRelevant_Objects_Inverted": {
+            "title": "回放关卡",
+            "description": "接下来，你会看到一次游戏的模拟回放。\n\n在这个过程中，你将不再能够控制蓝色或蓝色色环。\n\n请你将注意力集中在背景中呈现的人脸或物体上。\n\n<b>输入现已翻转。\n\n每当你看到<color='#FF9900'>物体</color>时，请按<color='#FF9900'>'{0}'</color> 键。</b>\n而当你看到人脸时，请不要按任何按键。\n\n切记将眼睛始终盯在中央注视点“X”上。祝你好运！",
+            "minimumDurationMS": 0
+        },
+        "leaderBoardTitle": "排行榜",
+        "leaderBoardSubjectName": "you",
+        "showCongratulatoryMessages": true,
+        "blueOrangeString_Comment": "Capitalize first letter, use lab language (ie. Chinese, English..)",
+        "blueString": "蓝色",
+        "orangeString": "黄色"
+    },
+    "PlayerProgression": {
+        "score": {
+            "type": 0,
+            "scorePercentileToKeepAfterDefeat": 0.800000011920929,
+            "scoreMaxLossAfterDefeat": 3.0,
+            "rewardPerSecond": 1,
+            "penaltyMissedStimulus": 2,
+            "penaltyFalseStimulus": 2,
+            "rewardFoundStimulus": 3,
+            "beepEveryScore": 10.0,
+            "essenseScore": 1.0,
+            "highEssenseScore": 2.0,
+            "scoreMultiplier": 0.5,
+            "neededScorePerLevelMultiplier": 1.5,
+            "thresholdForStars_1": 0.15000000596046449,
+            "thresholdForStars_2": 0.4000000059604645,
+            "thresholdForStars_3": 0.800000011920929
+        },
+        "levelsLibrary": {
+            "numWorldsFullGame": 4,
+            "numLevelsPerWorld": 4,
+            "numLocalizersPerWorld": 2,
+            "overrideDifficulty": -1.0,
+            "difficultyMultiplier": 1.0,
+            "wantedDurationMultiplier": 1.1349999904632569,
+            "skipAverageSpawnBeats_Multiplier": 4.0,
+            "invertBlueOrangeWorlds": false,
+            "_levels": [
+                {
+                    "levelID_1Based": -2,
+                    "levelName": "0_1",
+                    "skipAverageSpawnBeats_Base": 0.75,
+                    "gameType": 0,
+                    "koregraphyIndex": 1,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 60
+                },
+                {
+                    "levelID_1Based": -1,
+                    "levelName": "0_2",
+                    "skipAverageSpawnBeats_Base": 0.75,
+                    "gameType": 0,
+                    "koregraphyIndex": 2,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 45
+                },
+                {
+                    "levelID_1Based": 0,
+                    "levelName": "0_3",
+                    "skipAverageSpawnBeats_Base": 0.75,
+                    "gameType": 0,
+                    "koregraphyIndex": 3,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 1,
+                    "levelName": "1_1",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 11,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 2,
+                    "levelName": "1_2",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 12,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 130
+                },
+                {
+                    "levelID_1Based": 3,
+                    "levelName": "1_3",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 13,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 110
+                },
+                {
+                    "levelID_1Based": 4,
+                    "levelName": "1_4",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 14,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 150
+                },
+                {
+                    "levelID_1Based": 5,
+                    "levelName": "1_5",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 15,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 6,
+                    "levelName": "2_1",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 21,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 7,
+                    "levelName": "2_2",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 22,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 0.699999988079071,
+                    "wantedDuration": 110
+                },
+                {
+                    "levelID_1Based": 8,
+                    "levelName": "2_3",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 23,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 0.699999988079071,
+                    "wantedDuration": 150
+                },
+                {
+                    "levelID_1Based": 9,
+                    "levelName": "2_4",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 24,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 10,
+                    "levelName": "2_5",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 25,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 0.20000000298023225,
+                    "wantedDuration": 130
+                },
+                {
+                    "levelID_1Based": 11,
+                    "levelName": "3_1",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 31,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 70
+                },
+                {
+                    "levelID_1Based": 12,
+                    "levelName": "3_2",
+                    "skipAverageSpawnBeats_Base": 1.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 32,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 100
+                },
+                {
+                    "levelID_1Based": 13,
+                    "levelName": "3_3",
+                    "skipAverageSpawnBeats_Base": 1.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 33,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 14,
+                    "levelName": "3_4",
+                    "skipAverageSpawnBeats_Base": 1.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 34,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 0.6000000238418579,
+                    "wantedDuration": 140
+                },
+                {
+                    "levelID_1Based": 15,
+                    "levelName": "3_5",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 35,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 170
+                },
+                {
+                    "levelID_1Based": 16,
+                    "levelName": "4_1",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 41,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 0.699999988079071,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 17,
+                    "levelName": "4_2",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 42,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 18,
+                    "levelName": "4_3",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 43,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 19,
+                    "levelName": "4_4",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 44,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 20,
+                    "levelName": "4_5",
+                    "skipAverageSpawnBeats_Base": 2.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 45,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 120
+                },
+                {
+                    "levelID_1Based": 100,
+                    "levelName": "L_1",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 101,
+                    "levelName": "L_2",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 102,
+                    "levelName": "L_3",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 0,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 103,
+                    "levelName": "L_4",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 104,
+                    "levelName": "L_5",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 105,
+                    "levelName": "L_6",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 106,
+                    "levelName": "L_7",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                },
+                {
+                    "levelID_1Based": 107,
+                    "levelName": "L_8",
+                    "skipAverageSpawnBeats_Base": 0.0,
+                    "gameType": 1,
+                    "koregraphyIndex": 0,
+                    "lives": 3,
+                    "maxLives": 5,
+                    "musicVolume": 1.0,
+                    "wantedDuration": 90
+                }
+            ]
+        },
+        "levelMasterManager": {
+            "levelTimeOutDuration": 1800.0,
+            "pauseMusicWhenPausingGame": true,
+            "fadeScene_FirstHalf": {
+                "fadeColorHex_Comment": "Blocker color",
+                "fadeColorHex": "000000",
+                "fadeInDuration_Comment": "Fade-to-blocker when null event begins",
+                "fadeInDuration": 0.699999988079071,
+                "waitPreInstructions_Comment": "At the end of this duration, instructions are shown (where applicable) but the duration applies whether they are or not",
+                "waitPreInstructions": 5.0,
+                "waitInstructions_Comment": "If showing instructions, this duration is also applied (and the instructions are active)",
+                "waitInstructions": 10.0,
+                "waitPostInstructions_Comment": "This duration is applied after the preInstructions wait (if no instructions) or after the instructions wait (if instructions)",
+                "waitPostInstructions": 10.0,
+                "postWaitDuration_Comment": "This extra duration is when a few loading operations happen and is always applied after the postInstructions waiting",
+                "postWaitDuration": 1.0,
+                "fadeOutDuration_Comment": "Fade-to-scene when null event ends",
+                "fadeOutDuration": 0.699999988079071
+            },
+            "fadeScene_SecondHalf": {
+                "fadeColorHex_Comment": "Blocker color",
+                "fadeColorHex": "000000",
+                "fadeInDuration_Comment": "Fade-to-blocker when null event begins",
+                "fadeInDuration": 0.699999988079071,
+                "waitPreInstructions_Comment": "At the end of this duration, instructions are shown (where applicable) but the duration applies whether they are or not",
+                "waitPreInstructions": 5.0,
+                "waitInstructions_Comment": "If showing instructions, this duration is also applied (and the instructions are active)",
+                "waitInstructions": 10.0,
+                "waitPostInstructions_Comment": "This duration is applied after the preInstructions wait (if no instructions) or after the instructions wait (if instructions)",
+                "waitPostInstructions": 10.0,
+                "postWaitDuration_Comment": "This extra duration is when a few loading operations happen and is always applied after the postInstructions waiting",
+                "postWaitDuration": 1.0,
+                "fadeOutDuration_Comment": "Fade-to-scene when null event ends",
+                "fadeOutDuration": 0.699999988079071
+            },
+            "countToStartGame": 4,
+            "gameManager": {
+                "targetDurationCatchupPow": 1.0,
+                "fallingSpeedMultiplier": 0.4000000059604645,
+                "decoupleGameFromMusic": true,
+                "tieDifficultyToSkippedBeats": true,
+                "skippedBeatsMultiplier_Pow_Under_05": 0.5,
+                "skippedBeatsMultiplier_Pow_Over_05": 5.0,
+                "skippedBeatsMultiplier_Multi": 4.0,
+                "tieDifficultyToBadGoodEssenceRatio": true,
+                "badGoodEssenceRatio_Pow_Under_05": 2.75,
+                "badGoodEssenceRatio_Pow_Over_05": 1.25,
+                "badGoodEssenceRatio_Multi": 1.75,
+                "tieDifficultyToFallingSpeed": false,
+                "fallingSpeed_Pow_Under_05": 0.25,
+                "fallingSpeed_Pow_Over_05": 0.75,
+                "fallingSpeed_Multi": 1.5,
+                "sideSpeedMultiplier": 0.0,
+                "objectsPerSecond": 2.5,
+                "postRestartSpawnDelay": 1.0,
+                "normalToVibratingRatio": 2.0,
+                "regenerationSpeedPerSecond": 0.0,
+                "lifePerAbsorb_Normal": 0.25,
+                "lifePerAbsorb_HalfGray": 0.125,
+                "lifePerAbsorb_Vibrating": 0.5,
+                "damagePerAbsorb_Normal": 1.0,
+                "damagePerAbsorb_HalfGray": 1.0,
+                "damagePerAbsorb_Gray": 1.0,
+                "damagePerAbsorb_Vibrating": 2.0,
+                "blueWorldBGColorHex": "#0200FF",
+                "blueWorldBGBrightness": 0.5,
+                "blueWorldBGContrast": 1.100000023841858,
+                "orangeWorldBGColorHex": "#FF8800",
+                "orangeWorldBGBrightness": 0.8700000047683716,
+                "orangeWorldBGContrast": 1.5499999523162842,
+                "masterSettings_Comment": "Multiplies the resulting Key Frame",
+                "masterFrame": {
+                    "atDifficulty": -1.0,
+                    "essencesPerSecond": 1.0,
+                    "fallingSpeed": 1.0,
+                    "deadlockMultiplier": 1.0,
+                    "badGoodEssenceRatio": 1.0
+                },
+                "difficultyKeyFrames": [
+                    {
+                        "atDifficulty": 0.0,
+                        "essencesPerSecond": 3.0199999809265138,
+                        "fallingSpeed": 1.1269999742507935,
+                        "deadlockMultiplier": 2.5,
+                        "badGoodEssenceRatio": 1.0
+                    },
+                    {
+                        "atDifficulty": 0.25,
+                        "essencesPerSecond": 5.716000080108643,
+                        "fallingSpeed": 1.4420000314712525,
+                        "deadlockMultiplier": 1.75,
+                        "badGoodEssenceRatio": 1.0
+                    },
+                    {
+                        "atDifficulty": 0.5,
+                        "essencesPerSecond": 13.263999938964844,
+                        "fallingSpeed": 1.8040000200271607,
+                        "deadlockMultiplier": 1.149999976158142,
+                        "badGoodEssenceRatio": 1.0
+                    },
+                    {
+                        "atDifficulty": 1.0,
+                        "essencesPerSecond": 89.14800262451172,
+                        "fallingSpeed": 3.121999979019165,
+                        "deadlockMultiplier": 0.75,
+                        "badGoodEssenceRatio": 1.0
+                    }
+                ],
+                "powerUpRegenerationSeconds": 30.0,
+                "audio": {
+                    "doReplaySounds": true,
+                    "playSFX": true,
+                    "GameplayReward": {
+                        "enabled": true,
+                        "name": "SFXBeepPositive.wav",
+                        "volume": 1.0
+                    },
+                    "GameplayPenalty": {
+                        "enabled": true,
+                        "name": "253886__themusicalnomad__negative-beeps.wav",
+                        "volume": 0.29999998211860659
+                    },
+                    "GameStart": {
+                        "enabled": true,
+                        "name": "361122__cabled-mess__whoop.wav",
+                        "volume": 0.0
+                    },
+                    "GameOver": {
+                        "enabled": true,
+                        "name": "SFXBootSound.wav",
+                        "volume": 0.699999988079071
+                    },
+                    "Progress": {
+                        "enabled": true,
+                        "name": "SFXRhodesmas.mp3",
+                        "volume": 0.699999988079071
+                    }
+                },
+                "interactable": {
+                    "jumpingEssenceChance": 0.10000000149011612,
+                    "chargedBlueFallingMultiplier": 1.0,
+                    "chargedOrangeFallingMultiplier": 1.0
+                },
+                "badGoodEssenceRatio_Base": 1.0,
+                "inGameUI": {
+                    "showProgressBar": false,
+                    "powerUp": {
+                        "scaleTotal": 1.25,
+                        "scaleGlobe": 0.27000001072883608
+                    }
+                },
+                "playerManager": {
+                    "model": {
+                        "movementCooldown": 0.15000000596046449,
+                        "timeToFull": 0.05000000074505806,
+                        "valueAt0": 0.20000000298023225,
+                        "smoothHorizontal": true,
+                        "smoothVertical": false,
+                        "invulnerableDuration": 0.5
+                    },
+                    "view": {},
+                    "controller": {
+                        "ignoreHeldForMovement": true
+                    }
+                },
+                "powerUpAbsorbAnimationSeconds_Comment": "Average time it takes for essences to reach the player when absorbing",
+                "powerUpAbsorbAnimationSeconds": 0.5,
+                "powerUpAbsorbFailSafeSeconds_Comment": "Failsafe for auto-absorbing essences to prevent them from being stuck. Set to -1 to disable.",
+                "powerUpAbsorbFailSafeSeconds": 1.0,
+                "blockageTimeToAvoidDeadlocks": 0.4000000059604645,
+                "laneSwapDuration": 0.2199999988079071,
+                "baseLaneScale": 0.5666763782501221
+            }
+        }
+    },
+    "Leaderboard": {
+        "prependLabCodeToOpponentNames": true,
+        "thresholdPlayerTried": 0.25,
+        "opponents": [
+            {
+                "name": "101",
+                "differenceScoreMinMax": {
+                    "x": -0.10000000894069672,
+                    "y": 0.10000000894069672
+                },
+                "withRespectTo": 1,
+                "scoreMultiplier": 1.0
+            },
+            {
+                "name": "132",
+                "differenceScoreMinMax": {
+                    "x": -0.30000001192092898,
+                    "y": 0.10000000149011612
+                },
+                "withRespectTo": 1,
+                "scoreMultiplier": 1.0
+            },
+            {
+                "name": "117",
+                "differenceScoreMinMax": {
+                    "x": -0.10000000149011612,
+                    "y": 0.30000001192092898
+                },
+                "withRespectTo": 1,
+                "scoreMultiplier": 1.0
+            },
+            {
+                "name": "145",
+                "differenceScoreMinMax": {
+                    "x": -0.30000001192092898,
+                    "y": 0.20000000298023225
+                },
+                "withRespectTo": 0,
+                "scoreMultiplier": 1.0
+            },
+            {
+                "name": "114",
+                "differenceScoreMinMax": {
+                    "x": -0.5,
+                    "y": -0.30000001192092898
+                },
+                "withRespectTo": 0,
+                "scoreMultiplier": 1.0
+            }
+        ],
+        "backupName": "128",
+        "targetLevelScoreMultiplier": 1.0,
+        "opponentScoreMultiplier": 1.0
+    },
+    "Narration": {
+        "showNarration": false,
+        "inGameTextDurationMultiplier": 0.5,
+        "fadeDuration": 1.5,
+        "userSkipNarrationTime": 500,
+        "t_1_1_2": "Progress in your journey by collecting Vibrating Blue Essences",
+        "t_1_2_1": "Remember that absorbing Blue Essences restores Blue’s Health",
+        "t_1_3_0": "Vibrating Orange Essences are filled with energy: they move more swiftly!",
+        "t_2_1_1": "Orange absorbs Orange World Essences to restore health",
+        "t_2_1_0": "Use the arrow keys to move Orange left and right",
+        "t_2_2_0": "Being hit by the Opposite color hurts, move right or left to avoid Blue Essences",
+        "t_2_2_1": "Remember that absorbing Orange Essences restores Orange’s Health",
+        "t_2_2_2": "Keep on absorbing Orange Essences to advance in Orange’s adventure",
+        "t_2_3_0": "Remember: Orange Essences are healthy, Blue Essences are harmful",
+        "t_3_2_1": "Avoid Half-Gray Essences: they don't restore health, and they hurt the opposite-colored Dot",
+        "t_3_2_2": "Remember that absorbing Orange Essences with Orange and Blue Essences with Blue will replenish the health bar."
+    },
+    "TriggerOut": {
+        "debug": false,
+        "WARNING_0": "IMPORTANT :: If set to true, TESTING_ONLY_LOW_FPS will set the game to 1 frame per second. Use only to verify trigger behavior w.r.t. framerate. Disable when playing with subjects.",
+        "TESTING_ONLY_LOW_FPS": false,
+        "MASTER_MEEG": {
+            "description": "Master Control for all events in the MEEG setup. Enabled to false disables all triggers. do Audio/LPT/Photodiode to false disables all Audio/LPT/Photodiode events.",
+            "enabled": true,
+            "doAudio": false,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "MASTER_ECOG": {
+            "description": "Master Control for all events in the ECOG setup. Enabled to false disables all triggers. do Audio/LPT/Photodiode to false disables all Audio/LPT/Photodiode events.",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": false,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "MASTER_FMRI": {
+            "description": "Master Control for all events in the FMRI setup. Enabled to false disables all triggers. do Audio/LPT/Photodiode to false disables all Audio/LPT/Photodiode events.",
+            "enabled": true,
+            "doAudio": false,
+            "doLPT": false,
+            "doPhotodiode": false,
+            "doEyeTracking": true
+        },
+        "MASTER_MEEG_Preparation": {
+            "description": "Master Control for all events in the MEEG Preparation setup. Enabled to false disables all triggers. do Audio/LPT/Photodiode to false disables all Audio/LPT/Photodiode events.",
+            "enabled": false,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": false
+        },
+        "MASTER_FMRI_Preparation": {
+            "description": "Master Control for all events in the FMRI Preparation setup. Enabled to false disables all triggers. do Audio/LPT/Photodiode to false disables all Audio/LPT/Photodiode events.",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": false
+        },
+        "levelBegin": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "levelEnd": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "gameStimulusOn": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "gameBlankOn": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "gameFillerOn": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "gameProbeOn": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "gameResponse": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": false,
+            "doEyeTracking": true
+        },
+        "replayTaskOn": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "replayNonTaskOn": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "replayFillerOn": {
+            "description": "",
+            "enabled": true,
+            "doAudio": true,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "replayResponse": {
+            "description": "",
+            "enabled": true,
+            "doAudio": false,
+            "doLPT": true,
+            "doPhotodiode": false,
+            "doEyeTracking": true
+        },
+        "replayWindowOver": {
+            "description": "",
+            "enabled": true,
+            "doAudio": false,
+            "doLPT": true,
+            "doPhotodiode": false,
+            "doEyeTracking": true
+        },
+        "animationPeakEnd": {
+            "description": "",
+            "enabled": true,
+            "doAudio": false,
+            "doLPT": true,
+            "doPhotodiode": true,
+            "doEyeTracking": true
+        },
+        "orderOfExecution_Photodiode": 0,
+        "orderOfExecution_Audio": 1,
+        "orderOfExecution_LPT": 2,
+        "orderOfExecution_EyeTracking": 3,
+        "triggerCodes_A": {
+            "numBits": 6,
+            "levelBegin_Game": 62,
+            "levelBegin_Replay": 30,
+            "levelEnd_Game": 63,
+            "levelEnd_Replay": 31,
+            "gameStimulusOn_NonProbed_Face_TopLeft": 48,
+            "gameStimulusOn_NonProbed_Face_TopRight": 49,
+            "gameStimulusOn_NonProbed_Face_BottomRight": 50,
+            "gameStimulusOn_NonProbed_Face_BottomLeft": 51,
+            "gameStimulusOn_NonProbed_Object_TopLeft": 52,
+            "gameStimulusOn_NonProbed_Object_TopRight": 53,
+            "gameStimulusOn_NonProbed_Object_BottomRight": 54,
+            "gameStimulusOn_NonProbed_Object_BottomLeft": 55,
+            "gameStimulusOn_Probed_Face_TopLeft": 36,
+            "gameStimulusOn_Probed_Face_TopRight": 37,
+            "gameStimulusOn_Probed_Face_BottomRight": 38,
+            "gameStimulusOn_Probed_Face_BottomLeft": 39,
+            "gameStimulusOn_Probed_Object_TopLeft": 40,
+            "gameStimulusOn_Probed_Object_TopRight": 41,
+            "gameStimulusOn_Probed_Object_BottomRight": 42,
+            "gameStimulusOn_Probed_Object_BottomLeft": 43,
+            "gameBlankOn_NonProbed_TopLeft": 56,
+            "gameBlankOn_NonProbed_TopRight": 57,
+            "gameBlankOn_NonProbed_BottomRight": 58,
+            "gameBlankOn_NonProbed_BottomLeft": 59,
+            "gameBlankOn_Probed_TopLeft": 44,
+            "gameBlankOn_Probed_TopRight": 45,
+            "gameBlankOn_Probed_BottomRight": 46,
+            "gameBlankOn_Probed_BottomLeft": 47,
+            "gameFillerOn": 60,
+            "gameProbeOn": 2,
+            "gameResponse_NoResponse": 32,
+            "gameResponse_Yes": 33,
+            "gameResponse_No": 34,
+            "gameResponse_Maybe": 35,
+            "replayTaskOn_Face_TopLeft": 4,
+            "replayTaskOn_Face_TopRight": 5,
+            "replayTaskOn_Face_BottomRight": 6,
+            "replayTaskOn_Face_BottomLeft": 7,
+            "replayTaskOn_Object_TopLeft": 8,
+            "replayTaskOn_Object_TopRight": 9,
+            "replayTaskOn_Object_BottomRight": 10,
+            "replayTaskOn_Object_BottomLeft": 11,
+            "replayNonTaskOn_Face_TopLeft": 16,
+            "replayNonTaskOn_Face_TopRight": 17,
+            "replayNonTaskOn_Face_BottomRight": 18,
+            "replayNonTaskOn_Face_BottomLeft": 19,
+            "replayNonTaskOn_Object_TopLeft": 20,
+            "replayNonTaskOn_Object_TopRight": 21,
+            "replayNonTaskOn_Object_BottomRight": 22,
+            "replayNonTaskOn_Object_BottomLeft": 23,
+            "replayNonTaskOn_Blank_TopLeft": 24,
+            "replayNonTaskOn_Blank_TopRight": 25,
+            "replayNonTaskOn_Blank_BottomRight": 26,
+            "replayNonTaskOn_Blank_BottomLeft": 27,
+            "replayFillerOn": 28,
+            "replayWindowOver": 0,
+            "replayResponse": 1,
+            "animationPeakEnd_Game": 61,
+            "animationPeakEnd_Replay": 29
+        },
+        "triggerCodes_P": {
+            "doubleOnsetForLevelStart": true,
+            "doubleOnsetForLevelEnd": true
+        },
+        "triggerCodes_L": {
+            "priority_ReplayResponse": 10,
+            "priority_ReplayResponse_Timeout": 10,
+            "priority_GameResponse": 10,
+            "priority_GameResponse_Timeout": 10,
+            "responseNoAnswer": 96,
+            "responseMaybe": 97,
+            "responseYes": 98,
+            "responseNo": 99,
+            "probeOnSet": 100,
+            "localizerWindowOver": 196,
+            "localizerReport": 198,
+            "gameFillerCode": 95,
+            "localizerFillerCode": 195,
+            "gameFaceOffset": 0,
+            "gameObjectOffset": 20,
+            "gameBlankID": 50,
+            "replayFaceTargetFaceOffset": 100,
+            "replayFaceTargetObjectOffset": 120,
+            "replayFaceTargetBlankID": 150,
+            "replayObjectTargetFaceOffset": 200,
+            "replayObjectTargetObjectOffset": 220,
+            "replayObjectTargetBlankID": 250,
+            "levelBegin": 251,
+            "levelEnd": 252,
+            "animationPeakEnd": 253,
+            "directionTopLeft": 60,
+            "directionTopRight": 70,
+            "directionBottomRight": 80,
+            "directionBottomLeft": 90,
+            "probedTrialOffset": 1
+        },
+        "triggerCodes_E": {
+            "priority_ReplayResponse": 10,
+            "priority_ReplayResponse_Timeout": 10,
+            "priority_GameResponse": 10,
+            "priority_GameResponse_Timeout": 10,
+            "responseNoAnswer": 96,
+            "responseMaybe": 97,
+            "responseYes": 98,
+            "responseNo": 99,
+            "probeOnSet": 100,
+            "localizerWindowOver": 196,
+            "localizerReport": 198,
+            "gameFillerCode": 95,
+            "localizerFillerCode": 195,
+            "gameFaceOffset": 0,
+            "gameObjectOffset": 20,
+            "gameBlankID": 50,
+            "replayFaceTargetFaceOffset": 100,
+            "replayFaceTargetObjectOffset": 120,
+            "replayFaceTargetBlankID": 150,
+            "replayObjectTargetFaceOffset": 200,
+            "replayObjectTargetObjectOffset": 220,
+            "replayObjectTargetBlankID": 250,
+            "levelBegin": 251,
+            "levelEnd": 252,
+            "animationPeakEnd": 253,
+            "directionTopLeft": 60,
+            "directionTopRight": 70,
+            "directionBottomRight": 80,
+            "directionBottomLeft": 90,
+            "probedTrialOffset": 1
+        },
+        "triggerManagerPhotodiode": {
+            "debug": false,
+            "photodiodeManager": {
+                "debug": false,
+                "photoDiodeDurationMS": 50,
+                "photoDiodeDelayBetweenBangsMS": 50,
+                "photoDiodeBrightness": 1.0,
+                "photoDiodeSizeCM": 1.0,
+                "photoDiodeOffset_comment": "Linear offset, somewhat resolution independent | max_photoDiodeOffsetX = 49, max_photoDiodeOffsetY = 32 ",
+                "photoDiodeOffsetX": 0.0,
+                "photoDiodeOffsetY": 0.0,
+                "photoDiodeLeft": false
+            }
+        },
+        "triggerManagerAudio": {
+            "debug": false,
+            "playerType_Comment": "LowLevel = 0, Legacy = 1 | Use LowLevel unless otherwise needed",
+            "playerType": 1,
+            "logEachBitSeparately_Comment": "Setting to true will also PLAY them separately, as we need to accurately know the time each bit was played",
+            "logEachBitSeparately": false,
+            "oneBitPerFrame": false,
+            "doubleOnsetForLevelStart_Comment": "[Legacy Only]",
+            "doubleOnsetForLevelStart": false,
+            "doubleOnsetForLevelEnd": false,
+            "amplifyOnset": true,
+            "additionalTriggerPrefixBits": "",
+            "appendTriggerCode": true,
+            "padUntilCertainBitLength": 6,
+            "triggerSuffixBits": "1",
+            "fs": 48000,
+            "bitDurationMS": 50,
+            "amplification_Base": 1.0,
+            "amplification_Multi_Onset": 2.0,
+            "BUFFER_SIZE_COMMENT": "[SOS] Lower values reduce latency but may cause the playback engine and the game to crash. 4096 has been tested and found safe so far with no noticeable latency.",
+            "BUFFER_SIZE": 2048,
+            "SEND_DUMMY_TRIGGER_COMMENT": "[SOS] This is used with the Low Latency plugin as initialization, because the first audio output has extra latency and hitter. If that's not an issue, you can disable it.",
+            "SEND_DUMMY_TRIGGER": true,
+            "DUMMY_TRIGGER_COMMENT": "[SOS] Set it to something that is NOT an actual trigger. if it is, game will default to sending 2211001122",
+            "DUMMY_TRIGGER": "2211001122",
+            "_channel": 0,
+            "abortIfPlaying": true
+        },
+        "triggerManagerLPT": {
+            "debug": false,
+            "lptManager": {
+                "debug": true,
+                "accessPort": -12296,
+                "minDelayBetweenCodesMS": 50,
+                "clearPortAfterCode": true,
+                "clearPortAfterCode_DelayMS_Comment": "This is how long the Trigger stays up for in the LPT",
+                "clearPortAfterCode_DelayMS": 25,
+                "maxBitsPerSend_Comment": "Will segment codes that are above that into two consecutive sends (max value = 15)",
+                "maxBitsPerSend": 8,
+                "checkEveryMS": 1,
+                "resendSafetyMS_Comment": "Advised to be 1+ to avoid rounding errors",
+                "resendSafetyMS": 1,
+                "clearPortAfterCode_Prio": 0,
+                "retrySendingWhenBusy": true,
+                "interruptWhenHigherPrio": true,
+                "interruptResponseMS": 1,
+                "interruptClearForMS": 1,
+                "doInterruptClear": true
+            }
+        },
+        "triggerManagerEyeTracking": {
+            "debug": false,
+            "maxShortPerSend": 255,
+            "prependString": "TRIGGER"
+        },
+        "animationPeakEnd_PreventForFillers": true
+    },
+    "TriggerInKeyCode": {
+        "debug": false,
+        "sendTrigger": {
+            "_keyCodes": [
+                116
+            ],
+            "responseBoxDescription": ""
+        }
+    },
+    "TriggerInSerialPort": {
+        "lowToHigh": "a",
+        "serialPortConfig": {
+            "debug": false,
+            "portName": "COM3",
+            "baudRate": 115200,
+            "readBufferSize": 4096,
+            "EXPERIMENTER_ALLOW_SERIAL_FROM_KEYBOARD": true,
+            "EXPERIMENTER_SERIAL_FROM_KEYBOARD_KEY": 289
+        },
+        "enabled_MEEG": false,
+        "enabled_ECOG": false,
+        "enabled_FMRI_Scanner": true,
+        "enabled_MEEG_Preparation": false,
+        "enabled_FMRI_Preparation": false
+    },
+    "FMRI": {
+        "scannerSkipInstructions": false,
+        "showFixationDuringFade": true,
+        "popUpTimeout": 5.0,
+        "fmriPlayAudioDuringBetweenLevels": true,
+        "scanner_startGame_SendFakeSerialTriggers": false,
+        "numWorldsFMRIPrep": 1,
+        "numLevelsPerWorldFMRIPrep": 2,
+        "numLocalizersPerWorldFMRIPrep": 0,
+        "scannerShowTutorial_T": false,
+        "scannerShowTutorial_I": false,
+        "scannerShowTutorial_P": true,
+        "preventEscapeDuringNullEvent": true
+    },
+    "MEEG": {
+        "numWorldsPrep": 1,
+        "numLevelsPerWorldPrep": 2,
+        "numLocalizersPerWorldPrep": 0,
+        "fullVersion_ShowTutorial_T": false,
+        "fullVersion_ShowTutorial_I": true,
+        "fullVersion_ShowTutorial_P": true
+    },
+    "LevelProgression": {
+        "highEnergyEssenceLevel": 2,
+        "jumpingEssenceLevel": 5,
+        "thunderPowerUpLevel": 9,
+        "absorptionPowerUpLevel": 13,
+        "thunderPowerUpDescription": "During this level you will discover a new ability - Thunder! By using it, you destroy all the negative essences!",
+        "absorptionPowerUpDescription": "During this level you will discover a new ability - Absorption! By using it, you absorb all the positive essences!"
+    },
+    "Experiment": {
+        "stimulus": {
+            "taskRelevant_showRandomStimulusWhenQueueIsEmpty_Comment": "If set to false, it will show a filler instead",
+            "taskRelevant_showRandomStimulusWhenQueueIsEmpty": false,
+            "taskIrrelevant_cycleStimuliWheneQueueIsEmpty_Comment": "If set to false, it will show a filler instead",
+            "taskIrrelevant_cycleStimuliWheneQueueIsEmpty": false,
+            "createPreExposureSlide_Faces": true,
+            "preExposureConfig_Faces": {
+                "excludeNames": [],
+                "numColumns": 5,
+                "numRows": 2,
+                "fileName": "PreExposureSlideFaces",
+                "shuffle": true,
+                "paddingHorizontal": 1.649999976158142,
+                "paddingVertical": 1.649999976158142
+            },
+            "createPreExposureSlide_Objects": true,
+            "preExposureConfig_Objects": {
+                "excludeNames": [],
+                "numColumns": 5,
+                "numRows": 2,
+                "fileName": "PreExposureSlideObjects",
+                "shuffle": true,
+                "paddingHorizontal": 1.649999976158142,
+                "paddingVertical": 1.649999976158142
+            },
+            "timingsGameplay": {
+                "type_Comment": "Uniform = 0, TruncExp = 1",
+                "type": 0,
+                "uniform_backgroundToStimulusRatio": 3.0,
+                "truncExp_Config": {
+                    "λ": 0.6000000238418579,
+                    "min": 4.0,
+                    "max": 8.0,
+                    "numBins": 100
+                }
+            },
+            "timingsGameplay_FMRIScanner": {
+                "type_Comment": "Uniform = 0, TruncExp = 1",
+                "type": 1,
+                "uniform_backgroundToStimulusRatio": 3.0,
+                "truncExp_Config": {
+                    "λ": 2.0785000324249269,
+                    "min": 4.0,
+                    "max": 8.0,
+                    "numBins": 100
+                }
+            },
+            "timingsReplay_Comment": "If SameAsGame, uses the above values",
+            "timingsReplay_SameAsGame": true,
+            "_timingsReplay": {
+                "type_Comment": "Uniform = 0, TruncExp = 1",
+                "type": 0,
+                "uniform_backgroundToStimulusRatio": 2.0,
+                "truncExp_Config": {
+                    "λ": 0.6000000238418579,
+                    "min": 3.5,
+                    "max": 8.0,
+                    "numBins": 100
+                }
+            },
+            "_timingsReplay_FMRIScanner": {
+                "type_Comment": "Uniform = 0, TruncExp = 1",
+                "type": 0,
+                "uniform_backgroundToStimulusRatio": 2.0,
+                "truncExp_Config": {
+                    "λ": 0.6000000238418579,
+                    "min": 3.5,
+                    "max": 8.0,
+                    "numBins": 100
+                }
+            },
+            "backgroundToStimulus_Localizer_CorrectorMS_Comment": "Replay Stim Timings are not precalculated. We use some hacky calculations instead. This can help ensure the wanted distance between stimuli in replays.",
+            "backgroundToStimulus_Localizer_CorrectorMS": 100.0,
+            "backgroundToStimulus_Localizer_CorrectorAddFrame": false,
+            "stimulusAlpha": 1.0,
+            "stimulusBrightness": 1.0,
+            "blankVsNormalRatio_Gameplay": 0.20000000298023225,
+            "facesVsObjectsRatio_Gameplay": 0.5,
+            "wantedNumStimulus_Localizer_FullGame": 200,
+            "blankVsNormalRatio_Localizer": 0.20000000298023225,
+            "facesVsObjectsRatio_Localizer": 0.5,
+            "extraDelayMS_LocalizerEnd": 5000.0,
+            "background": {
+                "numFramesCorrector_Comment": "Can be used if FillerDetails.csv last longer than Timings.csv",
+                "numFramesCorrector": 1.8799999952316285,
+                "wantedOffset01_Comment": "Taking values from -1 to 1, determines how the area outside the active area is distributed",
+                "wantedOffset01": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "useActiveAreaInsteadOfFullScreen_Comment": "If set to true, player & Spawn anchors work w.r.t. _activeAreaVerticalOffsetFromScreenEdges. Otherwise, w.r.t. the screen edges.",
+                "useActiveAreaInsteadOfFullScreen": true,
+                "cropOutsideActiveArea_Comment": "Only used when useActiveAreaInsteadOfFullScreen is set to true",
+                "cropOutsideActiveArea": true,
+                "periodMinMax": {
+                    "min": 1.0,
+                    "max": 2.0
+                },
+                "verticalCenter_Runner": 0.5,
+                "horizontalCenter_Runner": 0.5,
+                "verticalCenter_Duet": 0.5,
+                "useBlobs": true,
+                "useCandidateBrightness": false,
+                "percentileToPaint_Satellite": 0.5,
+                "percentileToPaint_MainBlobs": 0.5,
+                "factorInCriticalSquares_Comment": "When true, the 4 critical squares are considered main squares as well and factored in when calculating how many main to paint",
+                "factorInCriticalSquares": true,
+                "satelliteScaleMulti": 1.0,
+                "cycleDuration": 0.5,
+                "peakDurationMS": 250,
+                "stayAtLowest": {
+                    "min": 0.25,
+                    "max": 0.6000000238418579
+                },
+                "useBlinkingSquaresAnimation": false,
+                "useAnimationOut": true,
+                "gridColor": {
+                    "r": 0.5,
+                    "g": 0.5,
+                    "b": 0.5,
+                    "a": 0.5
+                },
+                "gridWidth": 0.0,
+                "NUM_QUADRANT_ROWS": 9,
+                "NUM_QUADRANT_COLUMNS": 9,
+                "acceptableQuadrants": [
+                    {
+                        "x": 2,
+                        "y": 3
+                    },
+                    {
+                        "x": 2,
+                        "y": 4
+                    },
+                    {
+                        "x": 2,
+                        "y": 5
+                    },
+                    {
+                        "x": 2,
+                        "y": 6
+                    },
+                    {
+                        "x": 3,
+                        "y": 4
+                    },
+                    {
+                        "x": 3,
+                        "y": 5
+                    },
+                    {
+                        "x": 3,
+                        "y": 6
+                    },
+                    {
+                        "x": 5,
+                        "y": 4
+                    },
+                    {
+                        "x": 5,
+                        "y": 5
+                    },
+                    {
+                        "x": 5,
+                        "y": 6
+                    },
+                    {
+                        "x": 6,
+                        "y": 3
+                    },
+                    {
+                        "x": 6,
+                        "y": 4
+                    },
+                    {
+                        "x": 6,
+                        "y": 5
+                    },
+                    {
+                        "x": 6,
+                        "y": 6
+                    },
+                    {
+                        "x": 2,
+                        "y": 2
+                    },
+                    {
+                        "x": 3,
+                        "y": 2
+                    },
+                    {
+                        "x": 5,
+                        "y": 2
+                    },
+                    {
+                        "x": 6,
+                        "y": 2
+                    },
+                    {
+                        "x": 2,
+                        "y": 1
+                    },
+                    {
+                        "x": 3,
+                        "y": 1
+                    },
+                    {
+                        "x": 5,
+                        "y": 1
+                    },
+                    {
+                        "x": 6,
+                        "y": 1
+                    },
+                    {
+                        "x": 3,
+                        "y": 3
+                    },
+                    {
+                        "x": 5,
+                        "y": 3
+                    }
+                ],
+                "resetRandomnessAtBeginOfAnimCycle": true,
+                "alphaMain": 1.0,
+                "brightnessMain": 0.4000000059604645,
+                "brightnessStimulus": 1.0,
+                "useBrightnessStimulus": false,
+                "alphaOverlay_Peak_Low": {
+                    "min": 1.0,
+                    "max": 1.0
+                },
+                "alphaOverlay_Peak_High": {
+                    "min": 1.0,
+                    "max": 1.0
+                },
+                "brightnessOverlay_Peak_Low": {
+                    "min": 0.6000000238418579,
+                    "max": 0.8999999761581421
+                },
+                "brightnessOverlay_Peak_High": {
+                    "min": 0.6000000238418579,
+                    "max": 0.8999999761581421
+                },
+                "mainAnimationParts": [
+                    {
+                        "_description": "Rotate counter-clockwise while shrinking (full size -> min size) - first half of animation",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": -45.0,
+                            "max": -45.0
+                        },
+                        "animationType": 0,
+                        "mute": false
+                    },
+                    {
+                        "_description": "Rotate clockwise while growing (min size -> full size) - second half of animation",
+                        "start01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": -45.0,
+                            "max": -45.0
+                        },
+                        "valueAt1": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "animationType": 0,
+                        "mute": false
+                    },
+                    {
+                        "_description": "Shrink linearly from full size to min size first half of animation",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "valueAt0": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt1": {
+                            "min": 0.10000000149011612,
+                            "max": 0.10000000149011612
+                        },
+                        "animationType": 1,
+                        "mute": false
+                    },
+                    {
+                        "_description": "Grow linearly from min size to full size second half of animation",
+                        "start01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 0.10000000149011612,
+                            "max": 0.10000000149011612
+                        },
+                        "valueAt1": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "animationType": 1,
+                        "mute": false
+                    },
+                    {
+                        "_description": "Linear alpha Fade Out first half of animation (when shrinking)",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "valueAt0": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt1": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "animationType": 4,
+                        "mute": false
+                    },
+                    {
+                        "_description": "Linear alpha Fade In second half of animation (when growing)",
+                        "start01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "animationType": 4,
+                        "mute": true
+                    },
+                    {
+                        "_description": "Abrupt alpha fade out (set to 0) at beginning of anim (full size, before shrinking starts)",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "animationType": 4,
+                        "mute": true
+                    },
+                    {
+                        "_description": "Maintain alpha faded out (set to 0) throughout shrinking",
+                        "start01": {
+                            "min": 1.0000000116860974e-7,
+                            "max": 1.0000000116860974e-7
+                        },
+                        "finish01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "animationType": 4,
+                        "mute": true
+                    },
+                    {
+                        "_description": "Maintain alpha faded out (set to 0) throughout growing",
+                        "start01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "finish01": {
+                            "min": 0.9999989867210388,
+                            "max": 0.9999989867210388
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "animationType": 4,
+                        "mute": false
+                    },
+                    {
+                        "_description": "Abrupt alpha fade in (0->1) once max size is reached",
+                        "start01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt1": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "animationType": 4,
+                        "mute": false
+                    }
+                ],
+                "satelliteAnimationParts": [
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "valueAt0": {
+                            "min": -45.0,
+                            "max": -45.0
+                        },
+                        "valueAt1": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "animationType": 0,
+                        "mute": false
+                    },
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": -45.0,
+                            "max": -45.0
+                        },
+                        "animationType": 0,
+                        "mute": false
+                    },
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "valueAt0": {
+                            "min": 0.10000000149011612,
+                            "max": 0.10000000149011612
+                        },
+                        "valueAt1": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "animationType": 1,
+                        "mute": false
+                    },
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt1": {
+                            "min": 0.10000000149011612,
+                            "max": 0.10000000149011612
+                        },
+                        "animationType": 1,
+                        "mute": false
+                    },
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "animationType": 4,
+                        "mute": false
+                    },
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.5,
+                            "max": 0.5
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt1": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "animationType": 4,
+                        "mute": false
+                    }
+                ],
+                "blinkingAnimationParts": [
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.5
+                        },
+                        "valueAt1": {
+                            "min": 0.5,
+                            "max": 1.0
+                        },
+                        "animationType": 1,
+                        "mute": false
+                    },
+                    {
+                        "_description": "",
+                        "start01": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "finish01": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "valueAt0": {
+                            "min": 0.0,
+                            "max": 0.0
+                        },
+                        "valueAt1": {
+                            "min": 1.0,
+                            "max": 1.0
+                        },
+                        "animationType": 3,
+                        "mute": false
+                    }
+                ],
+                "wantedVisualAngleStimulus": 2.6785714626312258,
+                "wantedVisualAnglePlayer": 2.3035714626312258,
+                "wantedVisualAngleEssences": 2.142857074737549,
+                "wantedVisualAngleLanes": 7.5,
+                "wantedVisualAngleEccentricity": 5.346998691558838,
+                "wantedVisualAngleFixation": 2.6785714626312258,
+                "maxVisualAngleDeviationFromFixation": 2.0,
+                "wantedSubjectDistance_CM": 74.83999633789063,
+                "zoomIndexBase": 0.5,
+                "minZoomFactorBase": 0.5,
+                "maxZoomFactorBase": 2.0,
+                "zoomIndexLab_Behavioral": 0.37534216046333315,
+                "zoomIndexLab_Experimental": 0.3647199273109436,
+                "minZoomFactorLab": 0.0,
+                "backgroundVerticalPositionPercentileUnscaled": 0.5,
+                "backgroundVerticalPositionBaseOffset_DO_NOT_CHANGE": 5.0,
+                "fixationVerticalPositionPercentileUnscaled": 0.5,
+                "activeAreaVerticalOffsetFromScreenEdges_Comment": "Defines the active area",
+                "_activeAreaVerticalOffsetFromScreenEdges": 0.0,
+                "spawnVerticalPositionPercentileUnscaled_Offset_Comment": "Not used in the calculation of active area",
+                "spawnVerticalPositionPercentileUnscaled_Offset": 0.0,
+                "playerVerticalPositionPercentileUnscaled_Offset_Comment": "Not used in the calculation of active area",
+                "playerVerticalPositionPercentileUnscaled_Offset": 0.14827410876750947,
+                "_viewportBlockingColor": "#000000ff"
+            }
+        },
+        "allowProceedWithFailure_Full": false,
+        "allowProceedWithFailure_PrepScreening": false,
+        "numFramesDelayStartCurrentOnNoInstructionLevels": 2
+    },
+    "PerformanceObserver": {
+        "doReportOnGUI": false,
+        "runningAverage_newObservationWeight": 0.10000000149011612,
+        "runningAverage_amplifier": 1.0
+    },
+    "showTime": false,
+    "runInBackground_Comment": "Should the application run while alt-tabbed?",
+    "runInBackground": true,
+    "allowTimeScaleOutsideDebug": false,
+    "showCalibrationButton": false,
+    "maxNumTweens": 800,
+    "getSequenceFromFile": true,
+    "deInitializeHighAccuInputInMenu": false,
+    "levelSelectionInputSafetyLockSeconds_Comment": "Input is ignored for the first X seconds after entering the level selection",
+    "levelSelectionInputSafetyLockSeconds": 3.0,
+    "allowReplayOfCompleted": false,
+    "warnWhenReplayingOldWorlds": true,
+    "timingAccuracyTestSeconds": 5,
+    "doTimingAccuracyTest_Normal": true,
+    "doTimingAccuracyTest_Thread": true
+}
